@@ -17,10 +17,16 @@
   # environment.
   home.packages = with pkgs; [
     zsh
+    oh-my-zsh
+    zsh-powerlevel10k
+    zsh-syntax-highlighting
+
     tmux
+    tmuxPlugins.resurrect
+    tmuxPlugins.continuum
+    tmuxPlugins.fingers
 
     git
-
     fzf
     fd
     ripgrep
@@ -39,24 +45,31 @@
     neovim
     ccls
     bear
-    python3
 
     docker
     nvidia-container-toolkit
+
+    python312
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
+    ".alias".source = shell/.alias;
+    ".env-variables".source = shell/.env-variables;
+    ".p10k.zsh".source = shell/.p10k.zsh;
+    ".tmux.conf".source = shell/.tmux.conf;
+    ".zshrc".source = shell/.zshrc;
+    ".zsh-hooks".source = shell/.zsh-hooks;
   };
 
   home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
   };
 
   # Let Home Manager install and manage itself.
   programs = {
     home-manager.enable = true;
+
+    zsh = {
+      syntaxHighlighting.enable = true;
+    };
   };
 }

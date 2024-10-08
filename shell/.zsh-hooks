@@ -1,0 +1,63 @@
+# if [[ -x `which notify-send` ]]; then
+#     notify-preexec-hook() {
+#         zsh_notifier_cmd="$1"
+#         zsh_notifier_time="`date +%s`"
+#     }
+#
+#     notify-precmd-hook() {
+#         local time_taken
+#
+#         if [[ "${zsh_notifier_cmd}" != "" ]]; then
+#             time_taken=$(( `date +%s` - ${zsh_notifier_time} ))
+#             if (( $time_taken > 5 )); then
+#                 notify-send "task finished" \
+#                     "'$zsh_notifier_cmd' exited after $time_taken seconds"
+#             fi
+#         fi
+#         zsh_notifier_cmd=
+#     }
+# fi
+#
+# [[ -z $preexec_functions ]] && preexec_functions=()
+# preexec_functions=($preexec_functions notify-preexec-hook)
+#
+# [[ -z $precmd_functions ]] && precmd_functions=()
+# precmd_functions=($precmd_functions notify-precmd-hook)
+
+notify() {
+    emulate -L zsh  # Reset shell options inside this function.
+
+    # Fetch the last command with elapsed time from history:
+    local -a stats=( "${=$(fc -Dl -1)}" )
+    # = splits the string into an array of words.
+    # The elapsed time is the second word in the array.
+
+    # Convert the elapsed minutes (and potentially hours) to seconds:
+    local -a time=( "${(s.:.)stats[3]}" )
+    local -i seconds=0 mult=1
+    while (( $#time[@] )); do
+        (( seconds += mult * time[-1] ))
+        (( mult *= 60 ))
+        shift -p time
+    done
+
+    local -i min_time=600
+    if (( seconds >= min_time )); then
+        local -a ignores=( "vim" "ssh" )
+        for ignore in $ignores; do
+            if [[ "${stats[4,-1]:l}" == *"${ignore:l}"* ]]; then
+                return 0
+            fi
+        done
+        notify-send -u critical "Task complete!" "'$stats[4,-1]' took $seconds seconds"
+    fi
+
+    return 0  # Always return 'true' to avoid any hiccups.
+}
+
+# load add-zsh-hook if it's not available yet
+(( $+functions[add-zsh-hook] )) || autoload -Uz add-zsh-hook
+
+# Add hooks
+add-zsh-hook precmd notify
+

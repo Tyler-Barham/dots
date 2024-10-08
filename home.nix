@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   home.username = "tBarham";
   home.homeDirectory = "/home/tBarham";
 
@@ -42,10 +44,6 @@
     lazydocker
     neofetch
 
-    neovim
-    ccls
-    bear
-
     docker
     nvidia-container-toolkit
 
@@ -59,6 +57,8 @@
     ".tmux.conf".source = shell/.tmux.conf;
     ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
+
+    ".config/nvim".source = editor/nvim;
   };
 
   home.sessionVariables = {
@@ -70,6 +70,29 @@
 
     zsh = {
       syntaxHighlighting.enable = true;
+    };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      extraLuaPackages = ps: [
+        ps.lua
+        ps.luarocks-nix
+      ];
+      extraPackages = with pkgs; [
+        # LSP
+        lua-language-server
+        python312Packages.jedi-language-server
+        ccls
+        bear
+
+        # DAP
+        vscode-extensions.ms-vscode.cpptools
+
+        # Linter
+
+        # Formatter
+      ];
     };
   };
 }

@@ -1,0 +1,11 @@
+{
+    "workspace.library": [
+        "/home/tBarham/.config/nvim",
+        "/home/tBarham/.local/share/nvim/site",
+        "/usr/local/share/nvim/runtime",
+        "/usr/local/lib64/nvim",
+        "${3rd}/luv/library",
+        "${3rd}/luassert/library"
+    ],
+    "workspace.checkThirdParty": false
+}

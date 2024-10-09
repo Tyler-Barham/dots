@@ -62,6 +62,8 @@
     ".config/wezterm".source = terminal/wezterm;
 
     ".config/nvim".source = editor/nvim;
+    ".gdbinit".source = editor/gdb/.gdbinit;
+    ".gdb".source = editor/gdb/printers;
   };
 
   fonts.fontconfig.enable = true;

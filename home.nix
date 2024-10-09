@@ -2,6 +2,7 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+
   targets.genericLinux.enable = true;
   xdg.mime.enable = true;
 
@@ -24,11 +25,6 @@
     oh-my-zsh
     zsh-powerlevel10k
     zsh-syntax-highlighting
-
-    tmux
-    tmuxPlugins.resurrect
-    tmuxPlugins.continuum
-    tmuxPlugins.fingers
 
     nerdfonts
 
@@ -68,6 +64,8 @@
     ".config/nvim".source = editor/nvim;
   };
 
+  fonts.fontconfig.enable = true;
+
   home.sessionVariables = {
   };
 
@@ -77,6 +75,15 @@
 
     zsh = {
       syntaxHighlighting.enable = true;
+    };
+
+    tmux = {
+      enable = true;
+      plugins = with pkgs; [
+        tmuxPlugins.resurrect
+        tmuxPlugins.continuum
+        tmuxPlugins.fingers
+      ];
     };
 
     neovim = {

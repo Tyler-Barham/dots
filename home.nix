@@ -2,6 +2,8 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  targets.genericLinux.enable = true;
+  xdg.mime.enable = true;
 
   home.username = "tBarham";
   home.homeDirectory = "/home/tBarham";
@@ -27,6 +29,8 @@
     tmuxPlugins.resurrect
     tmuxPlugins.continuum
     tmuxPlugins.fingers
+
+    nerdfonts
 
     git
     fzf
@@ -57,6 +61,9 @@
     ".tmux.conf".source = shell/.tmux.conf;
     ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
+
+    # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
+    ".config/wezterm".source = terminal/wezterm;
 
     ".config/nvim".source = editor/nvim;
   };

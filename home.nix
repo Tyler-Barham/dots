@@ -44,9 +44,6 @@
     lazydocker
     neofetch
 
-    docker
-    nvidia-container-toolkit
-
     python312
 
     flameshot

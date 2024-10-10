@@ -1,0 +1,6 @@
+[user]
+    name = todo
+    email = todo
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/key-github_personal"

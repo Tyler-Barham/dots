@@ -1,0 +1,33 @@
+# name/email is conditionally set
+[includeIf "gitdir:~/Code/Personal/"]
+    path = ~/.gitconfig-Personal
+
+[includeIf "gitdir:~/Code/Tomra/"]
+    path = ~/.gitconfig-Tomra
+
+[init]
+    defaultBranch = main
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+[credential]
+    helper = store
+[core]
+    autocrlf = input
+[fetch]
+    prune = true
+[safe]
+    directory = /usr/local/bin
+[http]
+    sslVerify = true
+[merge]
+    tool = nvimdiff
+
+[alias]
+    hide = update-index --assume-unchanged
+    unhide = update-index --no-assume-unchanged
+    hidden = ! git ls-files -v | grep '^h'
+    permission-reset = ! git diff -p -R --no-ext-diff --no-color --diff-filter=M | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
+

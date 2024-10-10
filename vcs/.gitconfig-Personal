@@ -1,0 +1,6 @@
+[user]
+    name = Tyler Barham
+    email = tyler.r.barham@gmail.com
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/key-github_personal"

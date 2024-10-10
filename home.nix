@@ -58,6 +58,10 @@
     ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
 
+    ".gitconfig".source = vcs/.gitconfig;
+    ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
+    ".gitconfig-Tomra".source = vcs/.gitconfig-Tomra;
+
     # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
     ".config/wezterm".source = terminal/wezterm;
 

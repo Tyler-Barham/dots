@@ -48,6 +48,8 @@
     nvidia-container-toolkit
 
     python312
+
+    flameshot
   ];
 
   home.file = {

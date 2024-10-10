@@ -1,0 +1,3 @@
+[submodule "secret-sauce"]
+	path = secret-sauce
+	url = git@github.com:Tyler-Barham/secret-sauce.git

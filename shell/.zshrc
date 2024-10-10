@@ -58,6 +58,7 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 [ -f ~/.alias ] && source ~/.alias
+[ -f ~/.secret-sauce.alias ] && source ~/.secret-sauce.alias
 [ -f ~/.env-variables ] && source ~/.env-variables
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.cargo/env ] && source ~/.cargo/env

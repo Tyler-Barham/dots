@@ -51,6 +51,7 @@
 
   home.file = {
     ".alias".source = shell/.alias;
+    ".secret-sauce.alias".source =  secret-sauce/shell/.alias;
     ".env-variables".source = shell/.env-variables;
     ".p10k.zsh".source = shell/.p10k.zsh;
     ".tmux.conf".source = shell/.tmux.conf;
@@ -59,7 +60,7 @@
 
     ".gitconfig".source = vcs/.gitconfig;
     ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
-    ".gitconfig-Tomra".source = vcs/.gitconfig-Tomra;
+    ".gitconfig-Tomra".source = secret-sauce/vcs/.gitconfig-Tomra;
 
     # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
     ".config/wezterm".source = terminal/wezterm;

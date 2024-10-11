@@ -64,31 +64,18 @@ zstyle ':completion:*:*:docker-*:*' option-stacking yes
 [ -f ~/.cargo/env ] && source ~/.cargo/env
 [ -f ~/.zsh-hooks ] && source ~/.zsh-hooks
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE='/nix/store/kxzz9wr10q5r6wzflf90xvdggcfqgjzx-micromamba-1.5.8/bin/micromamba';
-export MAMBA_ROOT_PREFIX='/home/tBarham/micromamba';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 if [ -f ~/.p10k.zsh ]; then
   ZLE_RPROMPT_INDENT=0
   source ~/.p10k.zsh
 fi
 
-micromamba activate
-
 if [[ $TMUX_PANE ]]; then
     # local tmux_id="$(tmux display -p -F '#{window_index}_#{pane_index}')"
     # HISTFILE=$HOME/.bash_history/tmux_$tmux_id # Fails when ressurecting
-    HISTFILE=$HOME/.bash_history/tmux_${TMUX_PANE:1}
+    HISTFILE=$HOME/.tmux_history/tmux_${TMUX_PANE:1}
+else
+    HISTFILE=$HOME/.bash_history
 fi
 
 [ -f $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme ] && source $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme

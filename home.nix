@@ -25,6 +25,7 @@
     oh-my-zsh
     zsh-powerlevel10k
     zsh-syntax-highlighting
+    libnotify
 
     nerdfonts
 

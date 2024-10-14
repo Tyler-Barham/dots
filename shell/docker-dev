@@ -1,0 +1,36 @@
+#!/bin/bash
+
+container_name="dev-env"
+
+xhost +local:docker 1>/dev/null
+
+container_status=$(docker inspect -f '{{.State.Running}}' "$container_name" 2>/dev/null)
+if [ -z "$container_status" ]; then
+
+    # Run the image
+    docker run \
+        -d \
+        --net=host \
+        -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+        -v /dev/shm:/dev/shm:rw \
+        -v /dev/bus/usb:/dev/bus/usb:rw \
+        -v $HOME:/data \
+        -e NVIDIA_DRIVER_CAPABILITIES=all \
+        -e QT_X11_NO_MITSHM=1 \
+        -e TZ=Pacific/Auckland \
+        -e DISPLAY="$DISPLAY" \
+        --device /dev/dri \
+        --gpus all \
+        --name "$container_name" \
+        dev:latest \
+        tail -F /dev/null
+elif [ "$container_status" == "false" ]; then
+    docker start $container_name
+fi
+
+if [ $# -eq 0 ]; then
+    docker exec -it $container_name /bin/bash
+else
+    docker exec $container_name /bin/bash -ic "$@"
+fi
+

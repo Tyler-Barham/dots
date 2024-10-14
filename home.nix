@@ -62,6 +62,8 @@
     ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
 
+    ".local/bin/docker-dev".source = shell/docker-dev;
+
     ".gitconfig".source = vcs/.gitconfig;
     ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
     ".gitconfig-Tomra".source = secret-sauce/vcs/.gitconfig-Tomra;

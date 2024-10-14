@@ -45,9 +45,12 @@
     lazydocker
     neofetch
 
-    python312
-
     flameshot
+
+    gcc
+    cmake
+    python312
+    typescript
   ];
 
   home.file = {

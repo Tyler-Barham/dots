@@ -10,16 +10,14 @@ if [ -z "$container_status" ]; then
     # Run the image
     docker run \
         -d \
+        --privileged \
         --net=host \
         -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-        -v /dev/shm:/dev/shm:rw \
-        -v /dev/bus/usb:/dev/bus/usb:rw \
         -v $HOME:/data \
         -e NVIDIA_DRIVER_CAPABILITIES=all \
         -e QT_X11_NO_MITSHM=1 \
         -e TZ=Pacific/Auckland \
         -e DISPLAY="$DISPLAY" \
-        --device /dev/dri \
         --gpus all \
         --name "$container_name" \
         dev:latest \

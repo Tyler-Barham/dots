@@ -58,7 +58,6 @@
     ".secret-sauce.alias".source =  secret-sauce/shell/.alias;
     ".env-variables".source = shell/.env-variables;
     ".p10k.zsh".source = shell/.p10k.zsh;
-    ".tmux.conf".source = shell/.tmux.conf;
     ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
 
@@ -91,11 +90,29 @@
 
     tmux = {
       enable = true;
+      shell = "${pkgs.zsh}/bin/zsh";
       plugins = with pkgs; [
-        tmuxPlugins.resurrect
-        tmuxPlugins.continuum
-        tmuxPlugins.fingers
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = ''
+            set -g @resurrect-delete-backup-after '3'
+            set -g @resurrect-capture-pane-contents 'on'
+            set -g @resurrect-save 'M-s'
+            set -g @resurrect-restore 'M-r'
+          '';
+        }
+        {
+          plugin = tmuxPlugins.continuum;
+          extraConfig = ''
+            set -g @continuum-save-interval '15'
+            set -g @continuum-restore 'on'
+          '';
+        }
+        {
+          plugin = tmuxPlugins.fingers;
+        }
       ];
+      extraConfig = builtins.readFile ./shell/.tmux.conf;
     };
 
     neovim = {

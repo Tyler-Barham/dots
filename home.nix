@@ -58,7 +58,6 @@
     ".secret-sauce.alias".source =  secret-sauce/shell/.alias;
     ".env-variables".source = shell/.env-variables;
     ".p10k.zsh".source = shell/.p10k.zsh;
-    ".zshrc".source = shell/.zshrc;
     ".zsh-hooks".source = shell/.zsh-hooks;
 
     ".local/bin/docker-dev".source = shell/docker-dev;
@@ -85,7 +84,9 @@
     home-manager.enable = true;
 
     zsh = {
+      enable = true;
       syntaxHighlighting.enable = true;
+      initExtra = builtins.readFile ./shell/.zshrc;
     };
 
     tmux = {

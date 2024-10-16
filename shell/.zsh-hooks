@@ -43,7 +43,7 @@ notify() {
 
     local -i min_time=600
     if (( seconds >= min_time )); then
-        local -a ignores=( "vim" "ssh" )
+        local -a ignores=( "vim" "ssh" "docker-dev" )
         for ignore in $ignores; do
             if [[ "${stats[4,-1]:l}" == *"${ignore:l}"* ]]; then
                 return 0

@@ -49,8 +49,10 @@
 
     gcc
     cmake
-    python312
     typescript
+
+    python312
+    python312Packages.compiledb
   ];
 
   home.file = {
@@ -127,8 +129,6 @@
         # LSP
         lua-language-server
         python312Packages.jedi-language-server
-        ccls
-        bear
 
         # DAP
         vscode-extensions.ms-vscode.cpptools

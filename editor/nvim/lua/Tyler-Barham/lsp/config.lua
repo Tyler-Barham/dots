@@ -34,7 +34,10 @@ lspconfig.jedi_language_server.setup {
 
 -- lspconfig.clangd.setup {
 --   capabilities = capabilities,
---   cmd = { 'clangd' },
+--   cmd = {
+--     'docker-dev', '-i',
+--     'clangd', '--background-index', '2>/dev/null'
+--   },
 --   filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
 --   root_dir = lspconfig.util.root_pattern(
 --     '.clangd',
@@ -49,36 +52,36 @@ lspconfig.jedi_language_server.setup {
 --   single_file_support = false,
 -- }
 
-lspconfig.ccls.setup {
-  filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
-  single_file_support = false,
-  init_options = {
-    completion = {
-      caseSensitive = 2,
-    },
-    index = {
-      blacklist = { 'build/', 'builds/' },
-    },
-    highlight = {
-      lsRanges = true,
-    },
-  },
-}
+-- lspconfig.ccls.setup {
+--   filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
+--   single_file_support = false,
+--   init_options = {
+--     completion = {
+--       caseSensitive = 2,
+--     },
+--     index = {
+--       blacklist = { 'build/', 'builds/' },
+--     },
+--     highlight = {
+--       lsRanges = true,
+--     },
+--   },
+-- }
 
-lspconfig.kotlin_language_server.setup {
-  capabilities = capabilities
-}
+-- lspconfig.kotlin_language_server.setup {
+--   capabilities = capabilities
+-- }
 
-lspconfig.gdscript.setup {
-  capabilities = capabilities,
-  on_attach = function (client, _)
-    local _notify = client.notify
-    client.notify = function (method, params)
-      if method == 'textDocument/didClose' then
-        return -- Godot doesn't implement didClose yet
-      end
-      _notify(method, params)
-    end
-  end,
-}
+-- lspconfig.gdscript.setup {
+--   capabilities = capabilities,
+--   on_attach = function (client, _)
+--     local _notify = client.notify
+--     client.notify = function (method, params)
+--       if method == 'textDocument/didClose' then
+--         return -- Godot doesn't implement didClose yet
+--       end
+--       _notify(method, params)
+--     end
+--   end,
+-- }
 

@@ -113,6 +113,9 @@
         }
         {
           plugin = tmuxPlugins.fingers;
+          extraConfig = ''
+            bind -n M-f run -b "${pkgs.tmuxPlugins.fingers}/share/tmux-plugins/tmux-fingers/bin/tmux-fingers start --pane #{pane_id}"
+          '';
         }
       ];
       extraConfig = builtins.readFile ./shell/.tmux.conf;

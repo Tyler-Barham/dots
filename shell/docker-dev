@@ -9,6 +9,7 @@ if [ -z "$container_status" ]; then
 
     # Run the image
     docker run \
+        -i \
         -t \
         -d \
         --privileged \
@@ -22,7 +23,7 @@ if [ -z "$container_status" ]; then
         --gpus all \
         --name "$container_name" \
         dev:latest \
-        bash -ic "tail -F /dev/null"
+        bash -c "tail -F /dev/null"
 elif [ "$container_status" == "false" ]; then
     docker start $container_name
 fi
@@ -31,8 +32,8 @@ if [ $# -eq 0 ]; then
     docker exec -it $container_name /bin/bash
 elif [ "$1" = "-i" ]; then
     shift
-    docker exec -i $container_name /bin/bash -ic "$@"
+    docker exec -it $container_name /bin/bash -ic "$@"
 else
-    docker exec $container_name /bin/bash -ic "$@"
+    docker exec -t $container_name /bin/bash -ic "$@"
 fi
 

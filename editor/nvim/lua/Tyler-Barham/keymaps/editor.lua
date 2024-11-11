@@ -4,10 +4,9 @@ local opts = { silent = true, noremap = true }
 -- vim.keymap.set('t', '<leader>q', '<C-\\><C-n>', opts)
 
 -- Trouble
-vim.keymap.set('n', '<leader>xx', '<CMD>TroubleToggle<CR>',                       opts)
-vim.keymap.set('n', '<leader>xt', '<CMD>TroubleToggle telescope<CR>',             opts)
-vim.keymap.set('n', '<leader>xw', '<CMD>TroubleToggle workspace_diagnostics<CR>', opts)
-vim.keymap.set('n', '<leader>xd', '<CMD>TroubleToggle document_diagnostics<CR>',  opts)
+vim.keymap.set('n', '<leader>xt', '<CMD>Trouble telescope toggle<CR>',                opts)
+vim.keymap.set('n', '<leader>xx', '<CMD>Trouble diagnostics toggle<CR>',              opts)
+vim.keymap.set('n', '<leader>xb', '<CMD>Trouble diagnostics toggle filter.buf=0<CR>', opts)
 
 -- NeoTree
 -- Need different positions to show at the same time (regardless of edgy positions)

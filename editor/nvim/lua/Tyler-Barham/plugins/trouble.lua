@@ -2,6 +2,7 @@ require('trouble').setup({
   padding = true,
   severity = vim.diagnostic.severity.ERROR,
   use_diagnostic_signs = true,
+  focus = true,
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {

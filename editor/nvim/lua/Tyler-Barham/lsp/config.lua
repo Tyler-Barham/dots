@@ -52,21 +52,25 @@ lspconfig.jedi_language_server.setup {
 --   single_file_support = false,
 -- }
 
--- lspconfig.ccls.setup {
---   filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
---   single_file_support = false,
---   init_options = {
---     completion = {
---       caseSensitive = 2,
---     },
---     index = {
---       blacklist = { 'build/', 'builds/' },
---     },
---     highlight = {
---       lsRanges = true,
---     },
---   },
--- }
+lspconfig.ccls.setup {
+  cmd = {
+    'docker-dev', '-i',
+    'ccls'
+  },
+  filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
+  single_file_support = false,
+  init_options = {
+    completion = {
+      caseSensitive = 2,
+    },
+    index = {
+      blacklist = { 'build/', 'builds/' },
+    },
+    highlight = {
+      lsRanges = true,
+    },
+  },
+}
 
 -- lspconfig.kotlin_language_server.setup {
 --   capabilities = capabilities

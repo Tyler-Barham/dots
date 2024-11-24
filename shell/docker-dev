@@ -30,9 +30,12 @@ fi
 
 if [ $# -eq 0 ]; then
     docker exec -it $container_name /bin/bash
-elif [ "$1" = "-i" ]; then
+elif [ "$1" = "-it" ]; then
     shift
     docker exec -it $container_name /bin/bash -ic "$@"
+elif [ "$1" = "-i" ]; then
+    shift
+    docker exec -i $container_name /bin/bash -ic "$@"
 else
     docker exec -t $container_name /bin/bash -ic "$@"
 fi

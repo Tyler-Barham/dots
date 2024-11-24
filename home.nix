@@ -5,6 +5,8 @@
 
   targets.genericLinux.enable = true;
   xdg.mime.enable = true;
+  fonts.fontconfig.enable = true;
+  news.display = "silent";
 
   home.username = "tBarham";
   home.homeDirectory = "/home/tBarham";
@@ -17,6 +19,9 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
+
+  home.sessionVariables = {
+  };
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -74,11 +79,6 @@
     ".config/nvim".source = editor/nvim;
     ".gdbinit".source = editor/gdb/.gdbinit;
     ".gdb".source = editor/gdb/printers;
-  };
-
-  fonts.fontconfig.enable = true;
-
-  home.sessionVariables = {
   };
 
   # Let Home Manager install and manage itself.

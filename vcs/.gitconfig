@@ -26,8 +26,8 @@
     tool = nvimdiff
 
 [alias]
-    hide = update-index --assume-unchanged
-    unhide = update-index --no-assume-unchanged
-    hidden = ! git ls-files -v | grep '^h'
+    skip = update-index --skip-worktree
+    unskip = update-index --no-skip-worktree
+    skipped = ! git ls-files -v | grep '^S'
     permission-reset = ! git diff -p -R --no-ext-diff --no-color --diff-filter=M | grep -E \"^(diff|(old|new) mode)\" --color=never | git apply
 

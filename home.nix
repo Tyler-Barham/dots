@@ -109,6 +109,7 @@
           extraConfig = ''
             set -g @continuum-save-interval '15'
             set -g @continuum-restore 'on'
+            set -g status-right " #[fg=colour198][#[fg=colour74]#(echo $(( ($(date +%%s) - $(date -r ~/.tmux/resurrect/last +%%s)) / 60 ))mins )#[fg=colour198]]"
           '';
         }
         {

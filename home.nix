@@ -102,6 +102,7 @@
             set -g @resurrect-capture-pane-contents 'on'
             set -g @resurrect-save 'M-s'
             set -g @resurrect-restore 'M-r'
+            set -g @resurrect-processes '"~nvim->nvim"'
           '';
         }
         {

@@ -98,15 +98,6 @@ local plugins = {
 
   -- UI enhance
   {
-    'rcarriga/nvim-notify',
-    config = function()
-      require('notify').setup({
-        background_colour = '#000000',
-      })
-      vim.notify = require('notify')
-    end,
-  },
-  {
     'stevearc/dressing.nvim',
     config = function()
       require('Tyler-Barham.plugins.dressing')
@@ -166,7 +157,15 @@ local plugins = {
     'folke/noice.nvim',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
+      {
+        'rcarriga/nvim-notify',
+        config = function()
+          require('notify').setup({
+            background_colour = '#000000',
+          })
+          vim.notify = require('notify')
+        end,
+      },
     },
     config = function()
       require('noice').setup({

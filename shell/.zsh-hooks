@@ -41,15 +41,15 @@ notify() {
         shift -p time
     done
 
-    local -i min_time=600
+    local -i min_time=120
     if (( seconds >= min_time )); then
         local -a ignores=( "vim" "ssh" "docker-dev" )
         for ignore in $ignores; do
-            if [[ "${stats[4,-1]:l}" == *"${ignore:l}"* ]]; then
+            if [[ "${stats[4]:l}" == *"${ignore:l}"* ]]; then
                 return 0
             fi
         done
-        notify-send -u critical "Task complete!" "'$stats[4,-1]' took $seconds seconds"
+        notify-send -u critical "Completed '$stats[4]'" "$seconds seconds to execute:\n$stats[4,-1]"
     fi
 
     return 0  # Always return 'true' to avoid any hiccups.

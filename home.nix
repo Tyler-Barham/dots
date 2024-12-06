@@ -32,7 +32,7 @@
     zsh-syntax-highlighting
     libnotify
 
-    nerdfonts
+    (nerdfonts.override { fonts = [ "JetBrainsMono" "SourceCodePro" ]; })
 
     git
     fzf

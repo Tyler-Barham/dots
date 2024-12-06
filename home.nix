@@ -16,9 +16,9 @@
   # introduces backwards incompatible changes.
   #
   # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  # want to update the value, then make sure to first check
+  # https://nix-community.github.io/home-manager/release-notes.xhtml
+  home.stateVersion = "25.05"; # Please read the comment before changing.
 
   home.sessionVariables = {
   };
@@ -32,7 +32,8 @@
     zsh-syntax-highlighting
     libnotify
 
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "SourceCodePro" ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.sauce-code-pro
 
     git
     fzf

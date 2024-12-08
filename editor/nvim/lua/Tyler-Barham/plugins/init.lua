@@ -31,14 +31,19 @@ local plugins = {
   -- Movement
   {
     'm4xshen/hardtime.nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       require('Tyler-Barham.plugins.hardtime')
     end,
   },
   {
     'ThePrimeagen/harpoon',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       require('Tyler-Barham.plugins.harpoon')
     end,
@@ -69,7 +74,9 @@ local plugins = {
   -- },
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     build = ':TSUpdateSync',
     config = function()
       require('Tyler-Barham.plugins.treesitter')
@@ -78,7 +85,10 @@ local plugins = {
   'mfussenegger/nvim-dap',
   {
     'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'nvim-neotest/nvim-nio',
+    },
     config = function()
       require('Tyler-Barham.plugins.dap')
     end,
@@ -105,7 +115,9 @@ local plugins = {
   },
   {
     'lewis6991/gitsigns.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       require('Tyler-Barham.plugins.gitsigns')
     end,
@@ -141,14 +153,20 @@ local plugins = {
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'MunifTanjim/nui.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
     config = function()
       require('Tyler-Barham.plugins.neo-tree')
     end,
   },
   {
     'folke/trouble.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
     config = function()
       require('Tyler-Barham.plugins.trouble')
     end,
@@ -190,7 +208,10 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim',
     version = '0.1.x',
-    dependencies = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       require('Tyler-Barham.plugins.telescope')
     end,
@@ -223,7 +244,10 @@ local plugins = {
 
   {
     'mawkler/modicator.nvim',
-    dependencies = { 'luisiacc/gruvbox-baby', 'nvim-lualine/lualine.nvim' },
+    dependencies = {
+      'luisiacc/gruvbox-baby',
+      'nvim-lualine/lualine.nvim',
+    },
     config = function()
       require('modicator').setup({
         show_warnings = false,

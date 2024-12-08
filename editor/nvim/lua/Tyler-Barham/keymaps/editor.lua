@@ -17,5 +17,12 @@ vim.keymap.set('n', '<leader>nb', '<CMD>Neotree position=right toggle buffers   
 -- To update the guessed indent (don't use <leader>gi, or lazygit will delay)
 vim.keymap.set('n', '<leader>i', '<CMD>GuessIndent<CR>', opts)
 
+-- Move vis selection
+vim.keymap.set('v', 'H', ':<<CR>gv', opts)
+vim.keymap.set('v', 'L', ':><CR>gv', opts)
+vim.keymap.set('v', 'J', ':m\'>+1<CR>gv=gv', opts)
+vim.keymap.set('v', 'K', ':m\'<-2<CR>gv=gv', opts)
+
+-- Hide notification
 vim.keymap.set('n', '<leader><leader>', function() require('notify').dismiss() end, opts)
 

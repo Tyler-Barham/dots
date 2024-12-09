@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -96,32 +96,10 @@
       enable = true;
       shell = "${pkgs.zsh}/bin/zsh";
       plugins = with pkgs; [
-        {
-          plugin = tmuxPlugins.resurrect;
-          extraConfig = ''
-            set -g @resurrect-delete-backup-after '3'
-            set -g @resurrect-capture-pane-contents 'on'
-            set -g @resurrect-save 'M-s'
-            set -g @resurrect-restore 'M-r'
-            set -g @resurrect-processes '"~nvim->nvim"'
-          '';
-        }
-        {
-          plugin = tmuxPlugins.continuum;
-          extraConfig = ''
-            set -g @continuum-save-interval '15'
-            set -g @continuum-restore 'on'
-            set -g status-right " #[fg=colour198][#[fg=colour74]#(echo $(( ($(date +%%s) - $(date -r ~/.tmux/resurrect/last +%%s)) / 60 ))mins )#[fg=colour198]]"
-          '';
-        }
-        {
-          plugin = tmuxPlugins.fingers;
-          extraConfig = ''
-            bind -n M-f run -b "${pkgs.tmuxPlugins.fingers}/share/tmux-plugins/tmux-fingers/bin/tmux-fingers start --pane #{pane_id}"
-          '';
-        }
+        tmuxPlugins.resurrect
+        tmuxPlugins.continuum
+        tmuxPlugins.fingers
       ];
-      extraConfig = builtins.readFile ./shell/.tmux.conf;
     };
 
     neovim = {
@@ -145,4 +123,9 @@
       ];
     };
   };
+
+  # Using mkorder to inject the tmux config between file creation
+  # (priority 500) and plugin population (1000) so all vars are set
+  # before plugins start.
+  xdg.configFile."tmux/tmux.conf".text = lib.mkOrder 600 (builtins.readFile ./shell/.tmux.conf);
 }

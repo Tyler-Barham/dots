@@ -23,12 +23,13 @@ local FileUtils = require('Tyler-Barham.utils.files')
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = vim.fn.stdpath('data') .. '/mason/bin/OpenDebugAD7',
+  -- command = vim.fn.stdpath('data') .. '/mason/bin/OpenDebugAD7',
+  command = os.getenv('HOME') .. '/.local/bin/OpenDebugAD7',
 }
 
 dap.configurations.cpp = {
   {
-    name = 'Launch',
+    name = 'Launch locally',
     type = 'cppdbg',
     request = 'launch',
     program = function()
@@ -50,6 +51,30 @@ dap.configurations.cpp = {
     end,
     MIMode = 'gdb',
     miDebuggerPath = '/usr/bin/gdb',
+    setupCommands = {
+      -- pretty printing slows us down... 10s per step
+      {
+        description = 'Enable pretty-printing for gdb',
+        text = '-enable-pretty-printing',
+        ignoreFailures = true,
+      },
+    },
+  },
+  {
+    name = 'Attach to gdbserver',
+    type = 'cppdbg',
+    request = 'launch',
+    program = function()
+      local exe = FileUtils.get_link_target(vim.fn.getcwd()..'/builds/current/Engine')
+      return exe
+    end,
+    cwd = function()
+      local dir = FileUtils.get_link_target(vim.fn.getcwd()..'/builds/current/')
+      return dir
+    end,
+    MIMode = 'gdb',
+    miDebuggerPath = 'gdb',
+    miDebuggerServerAddress = 'localhost:4444',
     setupCommands = {
       -- pretty printing slows us down... 10s per step
       {

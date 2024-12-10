@@ -54,33 +54,13 @@
     flameshot
 
     gcc
+    gdb
     cmake
     typescript
 
     python312
     python312Packages.compiledb
   ];
-
-  home.file = {
-    ".alias".source = shell/.alias;
-    ".secret-sauce.alias".source =  secret-sauce/shell/.alias;
-    ".env-variables".source = shell/.env-variables;
-    ".p10k.zsh".source = shell/.p10k.zsh;
-    ".zsh-hooks".source = shell/.zsh-hooks;
-
-    ".local/bin/docker-dev".source = shell/docker-dev;
-
-    ".gitconfig".source = vcs/.gitconfig;
-    ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
-    ".gitconfig-Tomra".source = secret-sauce/vcs/.gitconfig-Tomra;
-
-    # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
-    ".config/wezterm".source = terminal/wezterm;
-
-    ".config/nvim".source = editor/nvim;
-    ".gdbinit".source = editor/gdb/.gdbinit;
-    ".gdb".source = editor/gdb/printers;
-  };
 
   # Let Home Manager install and manage itself.
   programs = {
@@ -124,8 +104,32 @@
     };
   };
 
+  home.file = {
+    ".alias".source = shell/.alias;
+    ".secret-sauce.alias".source =  secret-sauce/shell/.alias;
+    ".env-variables".source = shell/.env-variables;
+    ".p10k.zsh".source = shell/.p10k.zsh;
+    ".zsh-hooks".source = shell/.zsh-hooks;
+
+    ".local/bin/docker-dev".source = shell/docker-dev;
+
+    ".gitconfig".source = vcs/.gitconfig;
+    ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
+    ".gitconfig-Tomra".source = secret-sauce/vcs/.gitconfig-Tomra;
+
+    # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
+    ".config/wezterm".source = terminal/wezterm;
+
+    ".config/nvim".source = editor/nvim;
+    ".gdbinit".source = editor/gdb/.gdbinit;
+    ".gdb".source = editor/gdb/printers;
+
+    ".local/bin/OpenDebugAD7".source = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
+  };
+
   # Using mkorder to inject the tmux config between file creation
   # (priority 500) and plugin population (1000) so all vars are set
   # before plugins start.
   xdg.configFile."tmux/tmux.conf".text = lib.mkOrder 600 (builtins.readFile ./shell/.tmux.conf);
+
 }

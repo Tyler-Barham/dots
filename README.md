@@ -1,6 +1,9 @@
 # Dots
 [Tyler's](https://github.com/Tyler-Barham) personal dotfiles.
 
+![image](https://github.com/user-attachments/assets/777db22c-618d-4805-9ed2-491684912fc1)
+
+
 ## About
 This repo contains config files for my dev tools, such as terminal emulator, terminal multiplexer, shell environment, editor, and useful scripts.  
 Each of these configs are self-contained so that they can be easily copied around; however, this repo utilizes nix's [Home Manager](https://github.com/nix-community/home-manager) for dotfile management.

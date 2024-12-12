@@ -36,6 +36,7 @@
     nerd-fonts.sauce-code-pro
 
     git
+    git-lfs
     fzf
     fd
     ripgrep

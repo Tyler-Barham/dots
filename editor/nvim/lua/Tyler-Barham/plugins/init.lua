@@ -65,13 +65,6 @@ local plugins = {
 
   -- Code
   'neovim/nvim-lspconfig',
-  -- {
-  --   'williamboman/mason.nvim',
-  --   build = ':MasonUpdate',
-  --   config = function()
-  --     require('Tyler-Barham.plugins.mason')
-  --   end,
-  -- },
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -179,31 +172,12 @@ local plugins = {
       {
         'rcarriga/nvim-notify',
         config = function()
-          require('notify').setup({
-            background_colour = '#000000',
-          })
-          vim.notify = require('notify')
+          require('Tyler-Barham.plugins.notify')
         end,
       },
     },
     config = function()
-      require('noice').setup({
-        presets = {
-          command_palette = true,
-          lsp_doc_border = true,
-        },
-        lsp = {
-          progress = {
-            enabled = false,
-          },
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-          },
-        },
-      })
+      require('Tyler-Barham.plugins.noice')
     end,
   },
   {
@@ -250,9 +224,7 @@ local plugins = {
       'nvim-lualine/lualine.nvim',
     },
     config = function()
-      require('modicator').setup({
-        show_warnings = false,
-      })
+      require('Tyler-Barham.plugins.modicator')
     end,
   }
 }

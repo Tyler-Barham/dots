@@ -27,9 +27,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.sauce-code-pro
-
     git
     git-lfs
 
@@ -47,13 +44,12 @@
     ".gitconfig-Personal".source = vcs/.gitconfig-Personal;
     ".gitconfig-Tomra".source = secret-sauce/vcs/.gitconfig-Tomra;
 
-    # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
-    ".config/wezterm".source = terminal/wezterm;
 
   };
 
   imports = [
     ./editor
     ./shell
+    ./terminal
   ];
 }

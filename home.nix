@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
@@ -26,5 +27,5 @@
     ./shell
     ./terminal
     ./vcs
-  ];
+  ] ++ lib.optionals (builtins.pathExists ./secret-sauce/default.nix) [ ./secret-sauce ];
 }

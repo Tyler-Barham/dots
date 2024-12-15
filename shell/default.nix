@@ -53,7 +53,6 @@
 
   home.file = {
     ".alias".source = ./.alias;
-    ".secret-sauce.alias".source =  ../secret-sauce/shell/.alias;
     ".env-variables".source = ./.env-variables;
     ".p10k.zsh".source = ./.p10k.zsh;
     ".zsh-hooks".source = ./.zsh-hooks;

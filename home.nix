@@ -40,26 +40,6 @@
   programs = {
     home-manager.enable = true;
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      extraLuaPackages = ps: [
-        ps.lua
-        ps.luarocks-nix
-      ];
-      extraPackages = with pkgs; [
-        # LSP
-        lua-language-server
-        python312Packages.jedi-language-server
-
-        # DAP
-        vscode-extensions.ms-vscode.cpptools
-
-        # Linter
-
-        # Formatter
-      ];
-    };
   };
 
   home.file = {
@@ -70,14 +50,10 @@
     # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
     ".config/wezterm".source = terminal/wezterm;
 
-    ".config/nvim".source = editor/nvim;
-    ".gdbinit".source = editor/gdb/.gdbinit;
-    ".gdb".source = editor/gdb/printers;
-
-    ".local/bin/OpenDebugAD7".source = "${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7";
   };
 
   imports = [
+    ./editor
     ./shell
   ];
 }

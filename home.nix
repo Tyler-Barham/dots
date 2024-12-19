@@ -15,6 +15,13 @@
 
   home.packages = with pkgs; [
     flameshot
+
+    gcc
+    gdb
+    cmake
+    typescript
+    python312
+    python312Packages.compiledb
   ];
 
   # Let Home Manager install and manage itself.

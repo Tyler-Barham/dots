@@ -24,13 +24,6 @@
     lazygit
     lazydocker
     neofetch
-
-    gcc
-    gdb
-    cmake
-    typescript
-    python312
-    python312Packages.compiledb
   ];
 
   programs = {

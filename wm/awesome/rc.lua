@@ -14,9 +14,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+
+-- Autopopulate hotkeys help widget for external apps
+-- require("awful.hotkeys_popup.keys")
 
 -- My modules
 local keymaps = require("Tyler-Barham.keymaps")

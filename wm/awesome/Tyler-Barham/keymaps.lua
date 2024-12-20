@@ -16,12 +16,12 @@ local groups = {
 M.globalkeys = gears.table.join(
     -- Awesome manipulation
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group=groups.awesome}),
+              {description="Show help", group=groups.awesome}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = groups.awesome}),
+              {description = "Reload awesome", group = groups.awesome}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = groups.awesome}),
-    awful.key({ modkey }, "x",
+              {description = "Quit awesome", group = groups.awesome}),
+    awful.key({ modkey,           }, "x",
               function ()
                   awful.prompt.run {
                     prompt       = "Run Lua code: ",
@@ -30,7 +30,9 @@ M.globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = groups.awesome}),
+              {description = "Lua execute prompt", group = groups.awesome}),
+    awful.key({ modkey,           }, "Escape", function () awful.spawn. with_shell("xautolock -locknow") end,
+               {description = "Lock screen", group = groups.awesome}),
 
     -- Standard programs
     awful.key({ modkey,           }, "t", function () awful.spawn(terminal) end,
@@ -41,9 +43,9 @@ M.globalkeys = gears.table.join(
               {description = "Open file manager", group = groups.apps}),
     -- Prompts
     awful.key({ modkey },            "r",     function () awful.spawn.with_shell("rofi -show drun") end,
-              {description = "run prompt", group = groups.apps}),
+              {description = "Run prompt", group = groups.apps}),
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = groups.apps}),
+              {description = "Show the menubar", group = groups.apps}),
 
     -- Screen manipulation
     awful.key({ modkey,          }, "l", function () awful.screen.focus_relative( 1) end,
@@ -57,7 +59,7 @@ M.globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    awful.key({ modkey,           }, ";", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",

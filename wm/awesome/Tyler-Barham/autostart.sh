@@ -35,8 +35,18 @@ function set_wallpaper {
     nitrogen --restore
 }
 
+function set_network {
+    runonce nm-applet
+}
+
+function set_bluetooth {
+    runonce blueman-applet
+}
+
 set_monitor_layout
 set_compositor
 set_wallpaper
 set_screen_timeout
+set_network
+set_bluetooth
 

@@ -107,6 +107,20 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+--calendar-widget
+local mycalendar = awful.widget.calendar_popup.month({
+    position = "tc",
+    start_sunday = false,
+})
+-- mycalendar:attach(mytextclock, "tc", false)
+mytextclock:connect_signal("button::press", function(_, _, _, button)
+    if button == 1 then
+        mycalendar:toggle()
+    end
+end)
+
+local separator = wibox.widget.textbox("  ")
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -194,24 +208,38 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 25, opacity = 1 })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
+        layout = wibox.layout.stack,
+        expand = "none",
+        {
+            layout = wibox.layout.align.horizontal,
+            { -- Left widgets
+                layout = wibox.layout.fixed.horizontal,
+                separator,
+                mylauncher,
+                separator,
+                s.mytaglist,
+                separator,
+                s.mypromptbox,
+            },
+            -- { layout = wibox.layout.fixed.horizontal, },
+            nil,
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                wibox.widget.systray(),
+                separator,
+                mykeyboardlayout,
+                separator,
+            },
         },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
+        {
             mytextclock,
-            s.mylayoutbox,
+            valign = "center",
+            halign = "center",
+            layout = wibox.container.place,
         },
     }
 end)

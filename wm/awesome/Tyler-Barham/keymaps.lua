@@ -19,8 +19,6 @@ M.globalkeys = gears.table.join(
         {description="Show help", group=groups.awesome}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
         {description = "Reload awesome", group = groups.awesome}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-        {description = "Quit awesome", group = groups.awesome}),
     awful.key({ modkey,           }, "x",
         function ()
             awful.prompt.run {
@@ -33,6 +31,8 @@ M.globalkeys = gears.table.join(
         {description = "Lua execute prompt", group = groups.awesome}),
     awful.key({ modkey,           }, "Escape", function () awful.spawn. with_shell("xautolock -locknow") end,
         {description = "Lock screen", group = groups.awesome}),
+    awful.key({ modkey, "Shift"   }, "Escape", function () awful.spawn.with_shell("sudo shutdown now") end,
+        {description = "Shutdown", group = groups.awesome}),
 
     -- Standard programs
     awful.key({ modkey,           }, "t", function () awful.spawn(terminal) end,
@@ -42,7 +42,7 @@ M.globalkeys = gears.table.join(
     awful.key({ modkey,           }, "f", function () awful.spawn(filemanager) end,
         {description = "Open file manager", group = groups.apps}),
     -- Prompts
-    awful.key({ modkey },            "r",     function () awful.spawn.with_shell("rofi -show drun") end,
+    awful.key({ modkey },            "r",     function () awful.spawn.with_shell("rofi -show drun -theme ~/.config/rofi/launchers/custom.rasi") end,
         {description = "Run prompt", group = groups.apps}),
     awful.key({ modkey }, "p", function() menubar.show() end,
         {description = "Show the menubar", group = groups.apps}),

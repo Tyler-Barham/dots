@@ -1,3 +1,6 @@
 [submodule "secret-sauce"]
 	path = secret-sauce
 	url = git@github.com:Tyler-Barham/secret-sauce.git
+[submodule "wm/rofi"]
+	path = wm/rofi
+	url = git@github.com:Tyler-Barham/rofi.git

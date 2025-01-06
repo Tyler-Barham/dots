@@ -7,3 +7,6 @@
 [submodule "wm/awesome/awesome-wm-widgets"]
 	path = wm/awesome/awesome-wm-widgets
 	url = git@github.com:Tyler-Barham/awesome-wm-widgets.git
+[submodule "wm/awesome/awesome-sharedtags"]
+	path = wm/awesome/awesome-sharedtags
+	url = git@github.com:Tyler-Barham/awesome-sharedtags.git

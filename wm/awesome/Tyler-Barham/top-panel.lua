@@ -73,9 +73,6 @@ M.create = function(s)
             awful.client.focus.byidx(-1)
         end))
 
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
-
     s.mypromptbox = awful.widget.prompt()
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
@@ -164,6 +161,7 @@ M.create = function(s)
                         systray
                     },
                     separator,
+                    s.mylayoutbox,
                     separator,
                 }
             },

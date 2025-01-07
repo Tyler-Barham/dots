@@ -170,7 +170,7 @@ M.create = function(s)
     -- {{{ Wibar
     -- Create a textclock widget
     local mytextclock = wibox.widget.textclock("<span font='Grape Nuts Bold Italic 12'>%a %d %b - %T</span>", 1)
-    mytextclock.forced_width = 150
+    mytextclock.forced_width = 155
 
     local mycalendar = calendar_widget({
         start_sunday = true,

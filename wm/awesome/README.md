@@ -1,3 +1,4 @@
 ```
-sudo zypper in lightdm awesome picom rofi nitrogen NetworkManager-applet upower iw pulseaudio pulseaudio-utils blueman thunar thunar-plugin-archive xautolock
+sudo zypper in lightdm awesome picom rofi pulseaudio upower
+# sudo zypper in nitrogen NetworkManager-applet iw blueman thunar thunar-plugin-archive xautolock
 ```

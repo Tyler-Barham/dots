@@ -6,6 +6,7 @@ local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local gears = require("gears")
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
@@ -13,13 +14,26 @@ local theme = {}
 
 theme.font          = "sans 8"
 
-theme.bg_normal     = "#111111"
+            -- naughty.notify({
+            --     max_width = 300,
+            --     font = "Play 12",
+            --     fg = "#999999",
+            --     bg = "#111111",
+            --     border_width = 2,
+            --     border_color = "#999999",
+            --     shape = gears.shape.rounded_rect,
+            --     title = "Testy mctestface",
+            --     margin = 4,
+            --     text = "tthis is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification.\n this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. his is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. " })
+
+
+theme.bg_normal     = "#101800"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
+theme.fg_normal     = "#FFFEE8"
 theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
@@ -40,9 +54,19 @@ theme.border_marked = "#91231c"
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
--- Example:
+
+theme.taglist_bg_occupied = theme.bg_normal
+theme.taglist_fg_occupied = theme.fg_normal
+theme.taglist_bg_empty = theme.bg_normal
+theme.taglist_fg_empty = theme.fg_normal
+
+-- Invert for focused tag
 theme.taglist_bg_focus = theme.fg_normal
 theme.taglist_fg_focus = theme.bg_normal
+
+theme.taglist_shape = gears.shape.powerline
+theme.taglist_shape_border_width = 1
+theme.taglist_shape_border_color = theme.fg_normal
 
 -- Variables set for theming notifications:
 -- notification_font

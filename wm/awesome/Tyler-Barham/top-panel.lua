@@ -15,13 +15,12 @@ local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
 
 local panel_height = 32
 local widget_size = panel_height - 8
-local container_bg = "#111111"
 
 local systray = wibox.widget.systray()
 
 M.create = function(s)
     systray:set_base_size(widget_size)
-    beautiful.bg_systray = container_bg
+    beautiful.bg_systray = beautiful.bg_normal
     beautiful.systray_icon_spacing = 2
 
     local panel = awful.wibar({
@@ -88,11 +87,6 @@ M.create = function(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.noempty,
         buttons = taglist_buttons,
-        style   = {
-            shape = gears.shape.powerline,
-            bg_occupied = container_bg,
-            bg_empty = container_bg,
-        },
         layout  = {
             spacing = -10,
             spacing_widget = {
@@ -194,11 +188,13 @@ M.create = function(s)
                 spacing = -10,
                 {
                     widget = wibox.container.background,
-                    bg = container_bg,
+                    bg = beautiful.bg_normal,
                     shape = function (cr, w, h)
                         gears.shape.transform(gears.shape.rectangular_tag) : rotate_at(w/2, h/2, math.pi) (cr, w, h, h/2)
                     end,
-                    wibox.widget.textbox("     ")
+                    shape_border_width = beautiful.taglist_shape_border_width,
+                    shape_border_color = beautiful.taglist_shape_border_color,
+                    wibox.widget.textbox("      ")
                 },
                 s.mytaglist,
                 separator_end,
@@ -209,10 +205,12 @@ M.create = function(s)
                 spacing = -10,
                 {
                     widget = wibox.container.background,
-                    bg = container_bg,
+                    bg = beautiful.bg_normal,
                     shape = function (cr, w, h)
                         gears.shape.transform(gears.shape.powerline) : rotate_at(w/2, h/2, math.pi) (cr, w, h, h/2)
                     end,
+                    shape_border_width = beautiful.taglist_shape_border_width,
+                    shape_border_color = beautiful.taglist_shape_border_color,
                     {
                         layout = wibox.layout.fixed.horizontal,
                         separator_end,
@@ -226,10 +224,12 @@ M.create = function(s)
                 },
                 {
                     widget = wibox.container.background,
-                    bg = container_bg,
+                    bg = beautiful.bg_normal,
                     shape = function (cr, w, h)
                         gears.shape.transform(gears.shape.powerline) : rotate_at(w/2, h/2, math.pi) (cr, w, h, h/2)
                     end,
+                    shape_border_width = beautiful.taglist_shape_border_width,
+                    shape_border_color = beautiful.taglist_shape_border_color,
                     {
                         layout = wibox.layout.fixed.horizontal,
                         separator_end,
@@ -246,10 +246,12 @@ M.create = function(s)
                 },
                 {
                     widget = wibox.container.background,
-                    bg = container_bg,
+                    bg = beautiful.bg_normal,
                     shape = function (cr, w, h)
                         gears.shape.rectangular_tag(cr, w, h, h/2)
                     end,
+                    shape_border_width = beautiful.taglist_shape_border_width,
+                    shape_border_color = beautiful.taglist_shape_border_color,
                     {
                         layout = wibox.layout.fixed.horizontal,
                         separator_end,
@@ -271,8 +273,10 @@ M.create = function(s)
             layout = wibox.container.place,
             {
                 widget = wibox.container.background,
-                bg = container_bg,
+                bg = beautiful.bg_normal,
                 shape = gears.shape.octogon,
+                shape_border_width = beautiful.taglist_shape_border_width,
+                shape_border_color = beautiful.taglist_shape_border_color,
                 {
                     widget = wibox.container.margin,
                     left = 25,

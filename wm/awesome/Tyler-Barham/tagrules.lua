@@ -12,11 +12,11 @@ local tags = sharedtags({
     { name = "misc", screen = 1, layout = awful.layout.suit.tile },
     { name = "misc", screen = 1, layout = awful.layout.suit.tile },
     { name = "misc", screen = 1, layout = awful.layout.suit.tile },
-    { name = "www",  screen = 2, layout = awful.layout.suit.tile },
-    { name = "misc", screen = 2, layout = awful.layout.suit.tile },
-    { name = "misc", screen = 2, layout = awful.layout.suit.tile },
-    { name = "misc", screen = 2, layout = awful.layout.suit.tile },
-    { name = "misc", screen = 2, layout = awful.layout.suit.tile },
+    { name = "www",  screen = 2, layout = awful.layout.suit.tile.bottom },
+    { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
+    { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
+    { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
+    { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
 })
 
 local set_rules = function()

@@ -24,6 +24,8 @@ M.create = function(s)
         width = s.geometry.width,
     })
 
+    local margin_horiz = beautiful.wibar_height * 0.75
+
     -- Create a wibox for each screen and add it
     local taglist_buttons = gears.table.join(
         awful.button({ }, 1, function(t) t:view_only() end),
@@ -77,12 +79,10 @@ M.create = function(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
-        filter  = awful.widget.taglist.filter.noempty,
+        filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
         layout  = {
-            spacing = -10,
             spacing_widget = {
-                -- color = gears.color.transparent,
                 opacity = 0,
                 shape = gears.shape.powerline,
                 widget = wibox.widget.separator,
@@ -120,8 +120,8 @@ M.create = function(s)
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left  = 18,
-                right = 18,
+                left  = margin_horiz * 0.75,
+                right = margin_horiz * 0.75,
                 widget = wibox.container.margin
             },
             id     = 'background_role',
@@ -168,7 +168,6 @@ M.create = function(s)
     end)
 
     local separator = wibox.widget.textbox("  ")
-    local separator_end = wibox.widget.textbox("        ")
 
     panel:setup {
         layout = wibox.layout.stack,
@@ -177,7 +176,7 @@ M.create = function(s)
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                spacing = -10,
+                spacing = beautiful.taglist_spacing,
                 {
                     widget = wibox.container.background,
                     bg = beautiful.bg_normal,
@@ -189,12 +188,11 @@ M.create = function(s)
                     wibox.widget.textbox("      ")
                 },
                 s.mytaglist,
-                separator_end,
             },
             nil,
             { -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
-                spacing = -10,
+                spacing = beautiful.taglist_spacing,
                 {
                     widget = wibox.container.background,
                     bg = beautiful.bg_normal,
@@ -204,14 +202,14 @@ M.create = function(s)
                     shape_border_width = beautiful.taglist_shape_border_width,
                     shape_border_color = beautiful.taglist_shape_border_color,
                     {
-                        layout = wibox.layout.fixed.horizontal,
-                        separator_end,
+                        widget = wibox.container.margin,
+                        right = margin_horiz,
+                        left = margin_horiz,
                         spotify_widget({
                             dim_when_paused = true,
                             dim_opacity = 0.5,
                             show_tooltip = false,
                         }),
-                        separator_end,
                     }
                 },
                 {
@@ -223,17 +221,20 @@ M.create = function(s)
                     shape_border_width = beautiful.taglist_shape_border_width,
                     shape_border_color = beautiful.taglist_shape_border_color,
                     {
-                        layout = wibox.layout.fixed.horizontal,
-                        separator_end,
-                        volume_widget{
-                            widget_type = 'icon_and_text',
-                        },
-                        separator,
-                        battery_widget({
-                            path_to_icons = '/usr/share/icons/gnome/scalable/status/',
-                            show_current_level = true,
-                        }),
-                        separator_end,
+                        widget = wibox.container.margin,
+                        left = margin_horiz,
+                        right = margin_horiz,
+                        {
+                            layout = wibox.layout.fixed.horizontal,
+                            volume_widget{
+                                widget_type = 'icon_and_text',
+                            },
+                            separator,
+                            battery_widget({
+                                path_to_icons = '/usr/share/icons/gnome/scalable/status/',
+                                show_current_level = true,
+                            }),
+                        }
                     }
                 },
                 {
@@ -246,14 +247,17 @@ M.create = function(s)
                     shape_border_color = beautiful.taglist_shape_border_color,
                     {
                         layout = wibox.layout.fixed.horizontal,
-                        separator_end,
                         {
-                            widget = wibox.container.place,
-                            valign = "center",
-                            systray
+                            widget = wibox.container.margin,
+                            -- modified width as systray already has padding/margins
+                            left = margin_horiz * 0.75,
+                            right = margin_horiz * 0.5,
+                            {
+                                widget = wibox.container.place,
+                                valign = "center",
+                                systray
+                            }
                         },
-                        separator,
-                        separator,
                         s.mylayoutbox,
                         separator,
                     }

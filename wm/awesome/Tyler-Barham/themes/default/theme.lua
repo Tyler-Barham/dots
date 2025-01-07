@@ -72,6 +72,7 @@ theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_shape = gears.shape.powerline
 theme.taglist_shape_border_width = 1
 theme.taglist_shape_border_color = theme.fg_normal
+theme.taglist_spacing = -10
 
 -- Variables set for theming notifications:
 -- notification_font

@@ -32,6 +32,7 @@ theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
+theme.systray_icon_spacing = 4
 
 theme.fg_normal     = "#FFFEE8"
 theme.fg_focus      = "#ffffff"
@@ -54,6 +55,10 @@ theme.border_marked = "#91231c"
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
+
+theme.wibar_opacity = 1
+theme.wibar_height = 32
+theme.wibar_bg = gears.color.transparent
 
 theme.taglist_bg_occupied = theme.bg_normal
 theme.taglist_fg_occupied = theme.fg_normal

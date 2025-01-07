@@ -13,23 +13,15 @@ local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
 
-local panel_height = 32
-local widget_size = panel_height - 8
-
 local systray = wibox.widget.systray()
 
 M.create = function(s)
-    systray:set_base_size(widget_size)
-    beautiful.bg_systray = beautiful.bg_normal
-    beautiful.systray_icon_spacing = 2
+    systray:set_base_size(beautiful.wibar_height * 0.5)
 
     local panel = awful.wibar({
         screen = s,
         position = "top",
-        height = panel_height,
         width = s.geometry.width,
-        opacity = 1,
-        bg = gears.color.transparent
     })
 
     -- Create a wibox for each screen and add it
@@ -260,6 +252,7 @@ M.create = function(s)
                             valign = "center",
                             systray
                         },
+                        separator,
                         separator,
                         s.mylayoutbox,
                         separator,

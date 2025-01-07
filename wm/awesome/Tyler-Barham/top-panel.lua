@@ -216,6 +216,23 @@ M.create = function(s)
                     {
                         layout = wibox.layout.fixed.horizontal,
                         separator_end,
+                        spotify_widget({
+                            dim_when_paused = true,
+                            dim_opacity = 0.5,
+                            show_tooltip = false,
+                        }),
+                        separator_end,
+                    }
+                },
+                {
+                    widget = wibox.container.background,
+                    bg = container_bg,
+                    shape = function (cr, w, h)
+                        gears.shape.transform(gears.shape.powerline) : rotate_at(w/2, h/2, math.pi) (cr, w, h, h/2)
+                    end,
+                    {
+                        layout = wibox.layout.fixed.horizontal,
+                        separator_end,
                         volume_widget{
                             widget_type = 'icon_and_text',
                         },

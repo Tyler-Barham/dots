@@ -13,7 +13,7 @@ local tags = sharedtags({
     { name = "misc", screen = 1, layout = awful.layout.suit.tile },
     { name = "misc", screen = 1, layout = awful.layout.suit.tile },
     { name = "www",  screen = 2, layout = awful.layout.suit.tile.bottom },
-    { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
+    { name = "song", screen = 2, layout = awful.layout.suit.tile.bottom },
     { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
     { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
     { name = "misc", screen = 2, layout = awful.layout.suit.tile.bottom },
@@ -87,6 +87,8 @@ M.setup = function()
           properties = { tag = tags["chat"] } },
         { rule = { class = "Brave-browser" },
           properties = { tag = tags["www"] } },
+        { rule = { class = "Spotify" },
+          properties = { tag = tags["song"] } },
     }
 end
 

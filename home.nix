@@ -14,6 +14,8 @@
   home.homeDirectory = "/home/tBarham";
 
   home.packages = with pkgs; [
+    spotify
+
     flameshot
 
     gcc
@@ -30,6 +32,7 @@
   };
 
   imports = [
+    ./apps
     ./editor
     ./shell
     ./terminal

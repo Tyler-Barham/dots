@@ -6,6 +6,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local sharedtags = require("awesome-sharedtags")
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 local modkey = "Mod4"
 
@@ -101,7 +102,12 @@ M.get_globalkeys = function()
         awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
             {description = "select next", group = "layout"}),
         awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
-            {description = "select previous", group = "layout"})
+            {description = "select previous", group = "layout"}),
+
+
+        awful.key({}, "XF86AudioRaiseVolume", function() volume_widget.inc() end),
+        awful.key({}, "XF86AudioLowerVolume", function() volume_widget.dec() end),
+        awful.key({}, "XF86AudioMute", function() volume_widget.toggle() end)
     )
 
     return globalkeys

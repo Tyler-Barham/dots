@@ -9,7 +9,7 @@ local beautiful = require("beautiful")
 local keymaps = require("Tyler-Barham.keymaps")
 
 local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
-local battery_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
 local calendar_widget = require("awesome-wm-widgets.calendar-widget.calendar")
 
 local panel_height = 32
@@ -144,15 +144,12 @@ M.create = function(s)
                     layout = wibox.layout.fixed.horizontal,
                     separator_end,
                     volume_widget{
-                        widget_type = 'arc',
-                        size = widget_size,
+                        widget_type = 'icon_and_text',
                     },
                     separator,
                     battery_widget({
-                        size = widget_size,
-                        font = 'Play ' .. panel_height/3,
+                        path_to_icons = '/usr/share/icons/gnome/scalable/status/',
                         show_current_level = true,
-                        show_notification_mode = 'off',
                     }),
                     separator,
                     {

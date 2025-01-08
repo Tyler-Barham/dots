@@ -14,6 +14,7 @@ local groups = {
     awesome = "awesome",
     apps = "awesome apps",
     screens = "screen",
+    media = "media",
 }
 
 M.get_globalkeys = function()
@@ -33,7 +34,7 @@ M.get_globalkeys = function()
                 }
             end,
             {description = "Lua execute prompt", group = groups.awesome}),
-        awful.key({ modkey,           }, "Escape", function () awful.spawn. with_shell("dm-tool lock") end,
+        awful.key({ modkey,           }, "Escape", function () awful.spawn.with_shell("dm-tool lock") end,
             {description = "Lock screen", group = groups.awesome}),
         awful.key({ modkey, "Shift"   }, "Escape", function () awful.spawn.with_shell("sudo shutdown now") end,
             {description = "Shutdown", group = groups.awesome}),
@@ -107,9 +108,19 @@ M.get_globalkeys = function()
             {description = "select previous", group = "layout"}),
 
 
-        awful.key({}, "XF86AudioRaiseVolume", function() volume_widget.inc() end),
-        awful.key({}, "XF86AudioLowerVolume", function() volume_widget.dec() end),
-        awful.key({}, "XF86AudioMute", function() volume_widget.toggle() end)
+        awful.key({}, "XF86AudioRaiseVolume", function() volume_widget.inc() end,
+            {description = "Increase volume", group = groups.media}),
+        awful.key({}, "XF86AudioLowerVolume", function() volume_widget.dec() end,
+            {description = "Decrease volume", group = groups.media}),
+        awful.key({}, "XF86AudioMute", function() volume_widget.toggle() end,
+            {description = "Mute volume", group = groups.media}),
+
+        awful.key({}, "XF86AudioPlay", function() awful.spawn.with_shell("sp play") end,
+            {description = "Spotify play/pause", group = groups.media}),
+        awful.key({}, "XF86AudioPrev", function() awful.spawn.with_shell("sp prev") end,
+            {description = "Spotify previous track", group = groups.media}),
+        awful.key({}, "XF86AudioNext", function() awful.spawn.with_shell("sp next") end,
+            {description = "Spotift next track", group = groups.media})
     )
 
     return globalkeys

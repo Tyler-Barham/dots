@@ -14,6 +14,8 @@
   home.homeDirectory = "/home/tBarham";
 
   home.packages = with pkgs; [
+    spotify
+
     flameshot
 
     gcc
@@ -30,9 +32,11 @@
   };
 
   imports = [
+    ./apps
     ./editor
     ./shell
     ./terminal
     ./vcs
+    ./wm
   ] ++ lib.optionals (builtins.pathExists ./secret-sauce/default.nix) [ ./secret-sauce ];
 }

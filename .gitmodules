@@ -1,3 +1,12 @@
 [submodule "secret-sauce"]
 	path = secret-sauce
 	url = git@github.com:Tyler-Barham/secret-sauce.git
+[submodule "wm/rofi"]
+	path = wm/rofi
+	url = git@github.com:Tyler-Barham/rofi.git
+[submodule "wm/awesome/awesome-wm-widgets"]
+	path = wm/awesome/awesome-wm-widgets
+	url = git@github.com:Tyler-Barham/awesome-wm-widgets.git
+[submodule "wm/awesome/awesome-sharedtags"]
+	path = wm/awesome/awesome-sharedtags
+	url = git@github.com:Tyler-Barham/awesome-sharedtags.git

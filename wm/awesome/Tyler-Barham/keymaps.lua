@@ -45,6 +45,8 @@ M.get_globalkeys = function()
             {description = "Open browser", group = groups.apps}),
         awful.key({ modkey,           }, "f", function () awful.spawn(filemanager) end,
             {description = "Open file manager", group = groups.apps}),
+        awful.key({                   }, "Print", function () awful.spawn.with_shell("flameshot gui") end,
+            {description = "Flameshot", group = groups.apps}),
         -- Prompts
         awful.key({ modkey },            "r",     function () awful.spawn.with_shell("rofi -show drun -theme ~/.config/rofi/launchers/custom.rasi") end,
             {description = "Run prompt", group = groups.apps}),

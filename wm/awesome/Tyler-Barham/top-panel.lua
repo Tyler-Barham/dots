@@ -26,7 +26,6 @@ M.create = function(s)
 
     local margin_horiz = beautiful.wibar_height * 0.75
 
-    -- Create a wibox for each screen and add it
     local taglist_buttons = gears.table.join(
         awful.button({ }, 1, function(t) t:view_only() end),
         awful.button({ keymaps.modkey }, 1, function(t)
@@ -68,15 +67,13 @@ M.create = function(s)
 
     s.mypromptbox = awful.widget.prompt()
 
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    -- Create a taglist widget
+
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
@@ -126,35 +123,15 @@ M.create = function(s)
             },
             id     = 'background_role',
             widget = wibox.container.background,
-            -- Add support for hover colors and an index label
-            create_callback = function(self, c3, index, objects) --luacheck: no unused args
-                self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-                self:connect_signal('mouse::enter', function()
-                    if self.bg ~= '#ff0000' then
-                        self.backup     = self.bg
-                        self.has_backup = true
-                    end
-                    self.bg = '#ff0000'
-                end)
-                self:connect_signal('mouse::leave', function()
-                    if self.has_backup then self.bg = self.backup end
-                end)
-            end,
-            update_callback = function(self, c3, index, objects) --luacheck: no unused args
-                self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-            end,
         },
     }
 
-    -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons
     }
 
-    -- {{{ Wibar
-    -- Create a textclock widget
     local mytextclock = wibox.widget.textclock("<span font='Grape Nuts Bold Italic 12'>%a %d %b - %T</span>", 1)
     mytextclock.forced_width = 155
 

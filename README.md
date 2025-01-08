@@ -1,7 +1,7 @@
 # Dots
 [Tyler's](https://github.com/Tyler-Barham) personal dotfiles.
 
-![image](https://github.com/user-attachments/assets/777db22c-618d-4805-9ed2-491684912fc1)
+![image](https://github.com/user-attachments/assets/d951ac9c-7c3f-42f4-aeac-0347d07b6b25)
 
 
 ## About

@@ -22,9 +22,6 @@ function set_screen_timeout {
     xset s off
     xset s noblank
     xset -dpms
-
-    # Lock after inactivity
-    runonce xautolock -time 30 -locker "dm-tool lock" -notify 30 -notifier "notify-send -u critical -t 15000 -- 'Autolocking screen...'" -detectsleep
 }
 
 function set_compositor {

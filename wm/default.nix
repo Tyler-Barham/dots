@@ -11,7 +11,6 @@
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
-    xautolock
   ];
   home.file = {
     ".config/awesome".source = ./awesome;

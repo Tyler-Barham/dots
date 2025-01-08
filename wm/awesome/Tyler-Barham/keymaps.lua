@@ -33,7 +33,7 @@ M.get_globalkeys = function()
                 }
             end,
             {description = "Lua execute prompt", group = groups.awesome}),
-        awful.key({ modkey,           }, "Escape", function () awful.spawn. with_shell("xautolock -locknow") end,
+        awful.key({ modkey,           }, "Escape", function () awful.spawn. with_shell("dm-tool lock") end,
             {description = "Lock screen", group = groups.awesome}),
         awful.key({ modkey, "Shift"   }, "Escape", function () awful.spawn.with_shell("sudo shutdown now") end,
             {description = "Shutdown", group = groups.awesome}),

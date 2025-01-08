@@ -14,19 +14,6 @@ local theme = {}
 
 theme.font          = "sans 8"
 
-            -- naughty.notify({
-            --     max_width = 300,
-            --     font = "Play 12",
-            --     fg = "#999999",
-            --     bg = "#111111",
-            --     border_width = 2,
-            --     border_color = "#999999",
-            --     shape = gears.shape.rounded_rect,
-            --     title = "Testy mctestface",
-            --     margin = 4,
-            --     text = "tthis is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification.\n this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. his is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. this is a test notification. " })
-
-
 theme.bg_normal     = "#101800"
 theme.bg_focus      = "#535d6c"
 theme.bg_urgent     = "#ff0000"
@@ -75,10 +62,12 @@ theme.taglist_shape_border_color = theme.fg_normal
 theme.taglist_spacing = -10
 
 -- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
+theme.notification_font = "Play 12"
+theme.notification_fg = "#999999"
+theme.notification_bg = "#111111"
+theme.notification_shape = gears.shape.rounded_rect
+theme.notification_max_width = dpi(300)
+theme.notification_margin = dpi(4)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]

@@ -1,5 +1,5 @@
 ---------------------------
--- Default awesome theme --
+-- Modified Default awesome theme --
 ---------------------------
 
 local theme_assets = require("beautiful.theme_assets")
@@ -10,13 +10,15 @@ local gears = require("gears")
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local naughty = require("naughty")
+
 local theme = {}
 
 theme.font          = "sans 8"
 
 theme.bg_normal     = "#101800"
 theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
+theme.bg_urgent     = "#780000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 theme.systray_icon_spacing = dpi(4)
@@ -59,7 +61,7 @@ theme.taglist_fg_focus = theme.bg_normal
 theme.taglist_shape = gears.shape.powerline
 theme.taglist_shape_border_width = dpi(1)
 theme.taglist_shape_border_color = theme.fg_normal
-theme.taglist_spacing = dpi(-10)
+theme.taglist_spacing = dpi(-8)
 
 -- Variables set for theming notifications:
 theme.notification_font = "Play 12"
@@ -68,6 +70,16 @@ theme.notification_bg = "#111111"
 theme.notification_shape = gears.shape.rounded_rect
 theme.notification_max_width = dpi(300)
 theme.notification_margin = dpi(4)
+theme.notification_border_color = theme.notification_fg
+theme.notification_border_width = dpi(2)
+
+naughty.config.defaults.screen = 1
+naughty.config.defaults.timeout = 10
+naughty.config.padding = dpi(16)
+naughty.config.spacing = naughty.config.padding / 2
+naughty.config.defaults.border_width = theme.notification_border_width
+naughty.config.presets.critical.bg = theme.bg_urgent
+naughty.config.presets.critical.fg = theme.fg_urgent
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]

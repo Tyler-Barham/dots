@@ -45,6 +45,16 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 
+theme.hotkeys_bg = "#222222"
+theme.hotkeys_fg = theme.fg_normal
+theme.hotkeys_border_width = dpi(2)
+theme.hotkeys_border_color = theme.fg_normal
+theme.hotkeys_shape = gears.shape.rounded_rect
+theme.hotkeys_modifiers_fg = "#A09F91"
+theme.hotkeys_font = "Play 16"
+theme.hotkeys_description_font = "Play 12"
+theme.hotkeys_group_margin = dpi(32)
+
 theme.wibar_opacity = 1
 theme.wibar_height = dpi(32)
 theme.wibar_bg = gears.color.transparent

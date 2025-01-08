@@ -20,7 +20,7 @@ local groups = {
 M.get_globalkeys = function()
     local globalkeys = gears.table.join(
         -- Awesome manipulation
-        awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+        awful.key({ modkey,           }, "s",      function (c, _) hotkeys_popup.show_help(c, 1) end,
             {description="Show help", group=groups.awesome}),
         awful.key({ modkey, "Control" }, "r", awesome.restart,
             {description = "Reload awesome", group = groups.awesome}),

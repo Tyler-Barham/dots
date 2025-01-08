@@ -50,7 +50,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "Tyler-Barham/themes/default/theme.lua")
-beautiful.useless_gap = 4
 
 -- This is used later as the default terminal and editor to run.
 terminal = "wezterm"

@@ -261,8 +261,13 @@ M.create = function(s)
                                     systray
                                 }
                             },
-                            s.mylayoutbox,
-                            separator,
+                            {
+                                widget = wibox.container.margin,
+                                top = beautiful.systray_icon_spacing,
+                                bottom = beautiful.systray_icon_spacing,
+                                right = beautiful.systray_icon_spacing,
+                                s.mylayoutbox
+                            },
                         }
                     }
                 },

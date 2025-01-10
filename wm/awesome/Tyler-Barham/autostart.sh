@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
+srcDir=$(dirname $(realpath ${BASH_SOURCE[0]}))
 
 function runonce {
     if ! pgrep $1 ; then
         "$@" &
-    fi
-}
-
-function set_monitor_layout {
-    if xrandr | grep -q 'DP-1-2 connected' ; then
-        xrandr --output DP-1-2 --primary
-        xrandr --output DP-1-1 --right-of DP-1-2 --rotate right
-        xrandr --output eDP-1 --off
-    else
-        xrandr --output eDP-1 --primary
     fi
 }
 
@@ -40,7 +31,10 @@ function set_bluetooth {
     runonce blueman-applet
 }
 
-set_monitor_layout
+# Call xrandr via `display-setup-script` in /etc/lightdm/lightdm.conf
+# so that the displays are setup before any rendering
+# ${srcDir}/xrandr.sh
+
 set_compositor
 set_wallpaper
 set_screen_timeout

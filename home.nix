@@ -37,6 +37,6 @@
     ./shell
     ./terminal
     ./vcs
-    ./wm
+    # ./wm
   ] ++ lib.optionals (builtins.pathExists ./secret-sauce/default.nix) [ ./secret-sauce ];
 }

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function set_monitor_layout {
     # monitors_raw is a repeating sequence of 3 items per monitor
     # [monitor_id, max_resolution, '--', ...]

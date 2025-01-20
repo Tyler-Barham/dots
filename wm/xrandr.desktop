@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=MyXrandr
-Exec=./xrandr.sh
+Exec=/home/tBarham/.local/bin/xrandr.sh
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true

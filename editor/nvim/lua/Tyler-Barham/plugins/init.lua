@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '/'
 
 local plugins = {
   -- Auto handlers
@@ -192,6 +193,12 @@ local plugins = {
     end,
   },
   'nvim-telescope/telescope-ui-select.nvim',
+  {
+    'MagicDuck/grug-far.nvim',
+    config = function()
+      require('Tyler-Barham.plugins.grug-far')
+    end
+  },
 
   -- Util
   {

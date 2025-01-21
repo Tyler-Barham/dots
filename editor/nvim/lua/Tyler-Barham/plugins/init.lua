@@ -143,6 +143,12 @@ local plugins = {
       require('hlsearch').setup()
     end
   },
+  {
+    "sphamba/smear-cursor.nvim",
+    config = function()
+      require('Tyler-Barham.plugins.smear-cursor')
+    end
+  },
 
   -- UI components
   {

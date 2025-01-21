@@ -22,8 +22,21 @@
     gdb
     cmake
     typescript
-    python312
-    python312Packages.compiledb
+    compiledb
+    (python312.withPackages(ppkgs: with ppkgs; [
+      ipython
+      jupyter
+      matplotlib
+      numpy
+      pandas
+      pylint
+      pynvim
+      requests
+      setuptools
+      scipy
+      scikit-learn
+      opencv4
+    ]))
   ];
 
   # Let Home Manager install and manage itself.

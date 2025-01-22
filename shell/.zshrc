@@ -27,7 +27,8 @@ export FZF_DEFAULT_OPTS='
     --multi
     --preview="echo -e \"\\033c\"; pistol {} $FZF_PREVIEW_LINES $FZF_PREVIEW_COLUMNS"
     --preview-window="right,60%,border-block"
-    --bind "ctrl-v:become(nvim {})"
+    --bind="ctrl-v:become(nvim {})"
+    --bind="pgup:preview-up,pgdn:preview-down"
 '
 export FZF_ALT_C_OPTS='--preview "tree -C {}"' # cd. Change the preview type
 export FZF_CTRL_R_OPTS='--preview-window hidden' # history. Hide preivew window

@@ -19,6 +19,8 @@
     rclone
     gzip
     jq
+    pistol
+    # chafa -- gifs buggy. Using zypper version
 
     htop
     lazygit
@@ -47,6 +49,7 @@
     ".alias".source = ./.alias;
     ".env-variables".source = ./.env-variables;
     ".p10k.zsh".source = ./.p10k.zsh;
+    ".config/pistol/pistol.conf".source = ./pistol.conf;
     ".zsh-hooks".source = ./.zsh-hooks;
 
     ".local/bin/docker-dev".source = ./docker-dev;

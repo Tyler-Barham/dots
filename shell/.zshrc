@@ -21,10 +21,12 @@ export FZF_DEFAULT_OPTS='
     --color=fg+:#ebdbb2,bg+:#504945,hl+:#fabd2f
     --color=info:#83a598,prompt:#e0cba3,pointer:#83a598
     --color=marker:#87ff00,spinner:#fe8019,header:#665c54
+    --color=preview-bg:#000000
     --marker="+"
     --layout=reverse
     --multi
-    --preview "less -R {}"
+    --preview="echo -e \"\\033c\"; pistol {} $FZF_PREVIEW_LINES $FZF_PREVIEW_COLUMNS"
+    --preview-window="right,60%,border-block"
     --bind "ctrl-v:become(nvim {})"
 '
 export FZF_ALT_C_OPTS='--preview "tree -C {}"' # cd. Change the preview type

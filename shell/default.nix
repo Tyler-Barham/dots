@@ -23,7 +23,6 @@
     htop
     lazygit
     lazydocker
-    neofetch
   ];
 
   programs = {

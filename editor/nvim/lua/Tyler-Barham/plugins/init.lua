@@ -245,7 +245,10 @@ local plugins = {
 local opts = {
   defaults = { lazy = false },
   ui = { border = 'rounded' },
-  rocks = { enabled = true },
+  rocks = {
+    enabled = false,
+    hererocks = false,
+  },
   lockfile = "~/.config/home-manager/editor/nvim/lazy-lock.json",
 }
 

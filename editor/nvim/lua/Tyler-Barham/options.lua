@@ -54,3 +54,5 @@ vim.opt.cursorline = true
 -- Enable guifg and guibg
 vim.opt.termguicolors = true
 
+vim.opt.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+

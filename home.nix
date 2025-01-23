@@ -22,6 +22,7 @@
     gdb
     cmake
     typescript
+    sassc
     compiledb
     (python312.withPackages(ppkgs: with ppkgs; [
       ipython

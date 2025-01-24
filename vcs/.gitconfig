@@ -24,8 +24,13 @@
     sslVerify = true
 [merge]
     tool = nvimdiff
+[mergetool "nvimdiff"]
+    layout = "(LOCAL,REMOTE)/MERGED"
+    trustExitCode = false
+    keepBackup = false
 
 [alias]
+    root = rev-parse --show-toplevel
     skip = update-index --skip-worktree
     unskip = update-index --no-skip-worktree
     skipped = ! git ls-files -v | grep '^S'

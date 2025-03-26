@@ -14,10 +14,6 @@
   home.homeDirectory = "/home/tBarham";
 
   home.packages = with pkgs; [
-    spotify
-
-    flameshot
-
     gcc
     gdb
     cmake

@@ -223,7 +223,7 @@ local plugins = {
   },
 
   {
-    'luisiacc/gruvbox-baby',
+    'ellisonleao/gruvbox.nvim',
     config = function()
       require('Tyler-Barham.plugins.gruvbox')
     end,
@@ -233,7 +233,7 @@ local plugins = {
   {
     'mawkler/modicator.nvim',
     dependencies = {
-      'luisiacc/gruvbox-baby',
+      'ellisonleao/gruvbox.nvim',
       'nvim-lualine/lualine.nvim',
     },
     config = function()

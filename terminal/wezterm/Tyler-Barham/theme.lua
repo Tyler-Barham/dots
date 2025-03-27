@@ -2,9 +2,9 @@ local M = {}
 local wezterm = require('wezterm')
 
 function M.set_colors(config)
-  config.color_scheme = 'Gruvbox Dark (Gogh)'
+  config.color_scheme = 'Gruvbox (Gogh)'
   config.colors = {
-    background = 'black',
+    background = '#fdf9e7',
   }
   config.window_background_opacity = 0.9
   -- config.window_background_image = wezterm.config_dir .. '/Tyler-Barham/assets/background.gif'

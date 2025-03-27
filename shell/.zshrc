@@ -17,11 +17,11 @@ export LESSOPEN="| pygmentize %s 2> /dev/null"
 export LESS=' -R '
 
 export FZF_DEFAULT_OPTS='
-    --color=fg:#ebdbb2,bg:-1,hl:#fabd2f,gutter:-1
-    --color=fg+:#ebdbb2,bg+:#504945,hl+:#fabd2f
+    --color=fg:#504945,bg:-1,hl:#fabd2f,gutter:-1
+    --color=fg+:#504945,bg+:#ebdbb2,hl+:#fabd2f
     --color=info:#83a598,prompt:#e0cba3,pointer:#83a598
     --color=marker:#87ff00,spinner:#fe8019,header:#665c54
-    --color=preview-bg:#000000
+    --color=preview-bg:#ebdbb2
     --marker="+"
     --layout=reverse
     --multi

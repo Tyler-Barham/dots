@@ -1,10 +1,10 @@
-local FileUtils = require('Tyler-Barham.utils.files')
+-- local FileUtils = require('Tyler-Barham.utils.files')
 
 local colors = {
   black        = '#202020',
   neon         = '#DFFF00',
   white        = '#FFFFFF',
-  offwhite     = '#E7D7AD',
+  offwhite     = '#F7F5E5',
   green        = '#00D700',
   purple       = '#5F005F',
   blue         = '#00DFFF',
@@ -13,7 +13,7 @@ local colors = {
   brightgreen  = '#9CFFD3',
   gray         = '#444444',
   darkgray     = '#3c3836',
-  lightgray    = '#504945',
+  lightgray    = '#82756a',
   inactivegray = '#7c6f64',
   orange       = '#FFAF00',
   red          = '#5F0000',
@@ -21,42 +21,43 @@ local colors = {
   brightred    = '#AF0000',
   cyan         = '#00DFFF',
 }
+
 local custom_lualine = {
   normal = {
     a = { bg = colors.neon, fg = colors.black, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = nil, fg = colors.offwhite },
+    c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   insert = {
     a = { bg = colors.blue, fg = colors.darkblue, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = nil, fg = colors.offwhite },
+    c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   visual = {
     a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = nil, fg = colors.offwhite },
+    c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   replace = {
     a = { bg = colors.brightred, fg = colors.offwhite, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = nil, fg = colors.offwhite },
+    c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   command = {
     a = { bg = colors.green, fg = colors.black, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = nil, fg = colors.offwhite },
+    c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   inactive = {
-    a = { bg = colors.darkgray, fg = colors.gray, gui = 'bold' },
-    b = { bg = colors.darkgray, fg = colors.gray },
+    a = { bg = colors.lightgray, fg = colors.offwhite, gui = 'bold' },
+    b = { bg = colors.lightgray, fg = colors.offwhite },
     c = { bg = colors.lightgray, fg = colors.offwhite },
   },
 }
 
 require('lualine').setup({
   options = {
-    icons_enabled = true,
+    icons_enablned = true,
     -- theme = 'auto',
     theme = custom_lualine,
     component_separators = { left = '►', right = '◄'},
@@ -67,7 +68,7 @@ require('lualine').setup({
     },
     ignore_focus = {},
     always_divide_middle = true,
-    globalstatus = true, -- Will only show a single status bar, but adds horiz borders to windows
+    globalstatus = false, -- Will only show a single status bar
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -76,9 +77,9 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_b = {'branch', 'diagnostics'},
     lualine_c = {'filename'},
-    lualine_x = {FileUtils.get_buildproject, FileUtils.get_buildtype},
+    lualine_x = {'searchcount'},
     lualine_y = {'filetype'},
     lualine_z = {'progress', 'location'}
   },
@@ -86,7 +87,7 @@ require('lualine').setup({
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {'progress', 'location'},
     lualine_y = {},
     lualine_z = {}
   },

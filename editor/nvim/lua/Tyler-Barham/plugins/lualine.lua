@@ -5,6 +5,7 @@ local colors = {
   neon         = '#DFFF00',
   white        = '#FFFFFF',
   offwhite     = '#F7F5E5',
+  yellowwhite  = '#DFD0AA',
   green        = '#00D700',
   purple       = '#5F005F',
   blue         = '#00DFFF',
@@ -26,22 +27,22 @@ local custom_lualine = {
   normal = {
     a = { bg = colors.neon, fg = colors.black, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = colors.offwhite, fg = colors.darkgray },
+    c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   insert = {
     a = { bg = colors.blue, fg = colors.darkblue, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = colors.offwhite, fg = colors.darkgray },
+    c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   visual = {
     a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = colors.offwhite, fg = colors.darkgray },
+    c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   replace = {
     a = { bg = colors.brightred, fg = colors.offwhite, gui = 'bold' },
     b = { bg = colors.black, fg = colors.brightgreen },
-    c = { bg = colors.offwhite, fg = colors.darkgray },
+    c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   command = {
     a = { bg = colors.green, fg = colors.black, gui = 'bold' },

@@ -10,6 +10,6 @@ vim.keymap.set('n', '<F4>', '<CMD>bufdo e<CR>', opts)
 vim.keymap.set('n', '<leader>w', '<C-w>', opts)
 
 -- Movement
-vim.keymap.set({'n', 'v'}, '<M-v>', '<C-d>', opts)
-vim.keymap.set({'n', 'v'}, '<M-b>', '<C-u>', opts)
+vim.keymap.set({'n', 'v'}, '<M-v>', '<C-d>zz', opts)
+vim.keymap.set({'n', 'v'}, '<M-b>', '<C-u>zz', opts)
 vim.keymap.set('n', '<Del>', 'l', opts)

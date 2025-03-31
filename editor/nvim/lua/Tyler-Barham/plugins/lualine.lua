@@ -12,7 +12,7 @@ local colors = {
   darkblue     = '#00005F',
   navyblue     = '#000080',
   brightgreen  = '#9CFFD3',
-  gray         = '#444444',
+  gray         = '#7A7A7A',
   darkgray     = '#3c3836',
   lightgray    = '#82756a',
   inactivegray = '#7c6f64',
@@ -25,28 +25,28 @@ local colors = {
 
 local custom_lualine = {
   normal = {
-    a = { bg = colors.neon, fg = colors.black, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.brightgreen },
+    a = { bg = colors.black, fg = colors.neon, gui = 'bold' },
+    b = { bg = colors.gray, fg = colors.brightgreen },
     c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   insert = {
     a = { bg = colors.blue, fg = colors.darkblue, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.brightgreen },
+    b = { bg = colors.gray, fg = colors.brightgreen },
     c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   visual = {
     a = { bg = colors.orange, fg = colors.black, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.brightgreen },
+    b = { bg = colors.gray, fg = colors.brightgreen },
     c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   replace = {
     a = { bg = colors.brightred, fg = colors.offwhite, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.brightgreen },
+    b = { bg = colors.gray, fg = colors.brightgreen },
     c = { bg = colors.yellowwhite, fg = colors.darkgray },
   },
   command = {
     a = { bg = colors.green, fg = colors.black, gui = 'bold' },
-    b = { bg = colors.black, fg = colors.brightgreen },
+    b = { bg = colors.gray, fg = colors.brightgreen },
     c = { bg = colors.offwhite, fg = colors.darkgray },
   },
   inactive = {

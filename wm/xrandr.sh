@@ -20,8 +20,8 @@ function set_monitor_layout {
     # If both attached
     if [ -n "$dp_primary" ] && [ -n "$dp_secondary" ]; then
         echo "Using dispay config 1"
-        xrandr --output ${dp_primary} --primary --pos 0x240 --auto
-        xrandr --output ${dp_secondary} --rotate right --pos 2560x0 --auto
+        xrandr --output ${dp_primary} --primary --pos 1080x240 --auto
+        xrandr --output ${dp_secondary} --rotate right --pos 0x0 --auto
         xrandr --output ${dp_embedded} --off
 
     # If only primary attached

@@ -25,6 +25,10 @@
 # precmd_functions=($precmd_functions notify-precmd-hook)
 
 notify() {
+    # Ignore if connected via ssh
+    if [ -n "$SSH_TTY" ] || [ -n "$SSH_CLIENT" ]; then
+        return 0
+    fi
     emulate -L zsh  # Reset shell options inside this function.
 
     # Fetch the last command with elapsed time from history:

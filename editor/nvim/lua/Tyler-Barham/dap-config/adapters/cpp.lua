@@ -1,5 +1,6 @@
 local dap = require('dap')
-local FileUtils = require('Tyler-Barham.utils.files')
+local config_path = os.getenv('HOME') .. '/.config'
+local FileUtils = dofile(config_path .. '/common/file-utils.lua')
 
 -- dap.adapters.gdb = {
 --   id = 'gdb',

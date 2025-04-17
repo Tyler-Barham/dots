@@ -1,0 +1,23 @@
+return {
+  black        = '#202020',
+  neon         = '#DFFF00',
+  white        = '#FFFFFF',
+  -- offwhite     = '#F7F5E5',
+  yellowwhite  = '#DFD0AA',
+  green        = '#00D700',
+  purple       = '#5F005F',
+  blue         = '#00DFFF',
+  darkblue     = '#00005F',
+  navyblue     = '#000080',
+  brightgreen  = '#9CFFD3',
+  gray         = '#7A7A7A',
+  darkgray     = '#3c3836',
+  lightgray    = '#82756a',
+  inactivegray = '#7c6f64',
+  orange       = '#FFAF00',
+  red          = '#5F0000',
+  brightorange = '#C08A20',
+  brightred    = '#AF0000',
+  cyan         = '#00DFFF',
+}
+

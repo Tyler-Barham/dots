@@ -41,6 +41,10 @@
     home-manager.enable = true;
   };
 
+  home.file = {
+    ".config/common".source = ./common;
+  };
+
   imports = [
     ./apps
     ./editor

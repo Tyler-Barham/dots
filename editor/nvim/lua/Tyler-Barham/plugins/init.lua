@@ -123,12 +123,6 @@ local plugins = {
       require('Tyler-Barham.plugins.guess-indent')
     end,
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('Tyler-Barham.plugins.lualine')
-    end,
-  },
   'onsails/lspkind.nvim',
   {
     'lukas-reineke/indent-blankline.nvim',
@@ -224,8 +218,11 @@ local plugins = {
 
   {
     'ellisonleao/gruvbox.nvim',
+    dependencies = {
+      'nvim-lualine/lualine.nvim',
+    },
     config = function()
-      require('Tyler-Barham.plugins.gruvbox')
+      require('Tyler-Barham.themes.theme-selector').init_theme()
     end,
     priority = 25,
   },

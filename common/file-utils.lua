@@ -1,7 +1,8 @@
 local FileUtils = {}
 
-function FileUtils.read_file(path)
-  local file = io.open(path, 'rb')
+function FileUtils.read_file(filepath)
+  local realpath = FileUtils.get_link_target(filepath)
+  local file = io.open(realpath, 'rb')
   if not file then return nil end
   local content = file:read '*a' -- *a or *all reads the whole file
   file:close()
@@ -9,11 +10,12 @@ function FileUtils.read_file(path)
 end
 
 function FileUtils.write_file(filepath, content)
-  local dirpath = string.match(filepath, '(.*[/\\])')
+  local realpath = FileUtils.get_link_target(filepath)
+  local dirpath = string.match(realpath, '(.*[/\\])')
   local cmd = 'mkdir -p '..dirpath
   local _, _ pcall(io.popen, cmd)
 
-  local file = io.open(filepath, 'w+')
+  local file = io.open(realpath, 'w+')
   if not file then return false end
   file:write(content)
   file:close()
@@ -39,7 +41,14 @@ function FileUtils.path_to_table(path)
   return t
 end
 
-local build_target = vim.fn.getcwd()..'/builds/current'
+local function safe_vimcwd()
+  if vim and vim.fn and vim.fn.getcwd then
+    return vim.fn.getcwd()
+  end
+  return '.'
+end
+
+local build_target = safe_vimcwd() .. '/builds/current'
 
 function FileUtils.get_buildtype()
   local paths = FileUtils.path_to_table(FileUtils.get_link_target(build_target))

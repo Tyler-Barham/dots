@@ -37,7 +37,7 @@ function ips() {
         if [[ "$ifa" == "docker"* || "$ifa" == *"tun"* || "$ifa" == "lo" ]]; then
             continue;
         fi
-        sudo arp-scan --interface "$ifa" --localnet;
+        sudo arp-scan --interface "$ifa" --localnet --plain;
     done
 }
 function lg() { lazygit; }

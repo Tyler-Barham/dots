@@ -99,7 +99,6 @@ local plugins = {
       require('Comment').setup()
     end,
   },
-  { 'ericcurtin/CurtineIncSw.vim' },
 
   -- UI enhance
   {

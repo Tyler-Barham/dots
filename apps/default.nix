@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     spotify
     flameshot
+    netron
     weylus
   ];
   home.file = {

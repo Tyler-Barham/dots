@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-onnx">
+    <comment>Onnx model</comment>
+    <glob pattern="*.onnx"/>
+  </mime-type>
+</mime-info>

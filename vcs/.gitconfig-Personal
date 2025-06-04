@@ -1,6 +1,13 @@
 [user]
     name = todo
     email = todo
+    signingkey = ~/.ssh/key-github_personal.pub
+
+[gpg]
+    format = ssh
+
+[commit]
+    gpgsign = true
 
 [core]
     sshCommand = "ssh -i ~/.ssh/key-github_personal"

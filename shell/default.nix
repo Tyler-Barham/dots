@@ -25,6 +25,8 @@
     htop
     lazygit
     lazydocker
+
+    azure-storage-azcopy
   ];
 
   programs = {

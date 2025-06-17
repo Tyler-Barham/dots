@@ -5,13 +5,13 @@ local ThemeSelector = {}
 local theme_file = '~/.local/state/.theme'
 
 local function load_light()
-  require('Tyler-Barham.themes.light.gruvbox').setup()
+  require('Tyler-Barham.themes.light.my-gruvbox').setup()
   local lualine_theme = require('Tyler-Barham.themes.light.lualine-colors')
   require('Tyler-Barham.themes.lualine').setup(lualine_theme)
 end
 
 local function load_dark()
-  require('Tyler-Barham.themes.dark.gruvbox').setup()
+  require('Tyler-Barham.themes.dark.my-gruvbox').setup()
   local lualine_theme = require('Tyler-Barham.themes.dark.lualine-colors')
   require('Tyler-Barham.themes.lualine').setup(lualine_theme)
 end

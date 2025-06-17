@@ -7,7 +7,7 @@
   "cmp-path": { "branch": "main", "commit": "c6635aae33a50d6010bf1aa756ac2398a2d54c32" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
-  "floating-help.nvim": { "branch": "main", "commit": "1e61cb6804b7aac7fb0ccfdccbbd01a0a4c92241" },
+  "floating-help.nvim": { "branch": "main", "commit": "9204d1d14514ae63edc3ae434dfe9668245b8284" },
   "gitsigns.nvim": { "branch": "main", "commit": "3c76f7fabac723aa682365ef782f88a83ccdb4ac" },
   "grug-far.nvim": { "branch": "main", "commit": "9411a99390014231753bbb7a2afe6886fda99257" },
   "gruvbox.nvim": { "branch": "main", "commit": "977b0103c66d505233d739b417cf01bd5994883e" },

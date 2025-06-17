@@ -64,6 +64,20 @@ require('neo-tree').setup({
         conflict  = "",
       }
     },
+    diagnostics = {
+      symbols = {
+        error = " ",
+        warn  = " ",
+        info  = " ",
+        hint  = "󰌵 ",
+      },
+      highlights = {
+        error = 'DiagnosticSignError',
+        warn  = 'DiagnosticSignWarn',
+        info  = 'DiagnosticSignInfo',
+        hint  = 'DiagnosticSignHint',
+      },
+    },
   },
   -- A list of functions, each representing a global custom command
   -- that will be available in all sources (if not overridden in `opts[source_name].commands`)
@@ -202,10 +216,4 @@ require('neo-tree').setup({
     }
   },
 })
-
--- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define('DiagnosticSignError', {text = " ", texthl = 'DiagnosticSignError'})
-vim.fn.sign_define('DiagnosticSignWarn',  {text = " ", texthl = 'DiagnosticSignWarn'})
-vim.fn.sign_define('DiagnosticSignInfo',  {text = " ", texthl = 'DiagnosticSignInfo'})
-vim.fn.sign_define('DiagnosticSignHint',  {text = "󰌵 ",  texthl = 'DiagnosticSignHint'})
 

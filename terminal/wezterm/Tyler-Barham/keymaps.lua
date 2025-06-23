@@ -16,8 +16,10 @@ function M.set_keymaps(config)
   config.keys = {
     { key = 'Backspace',  mods = 'ALT',         action = wezterm.action.CloseCurrentPane { confirm = false } },
     { key = 'w',          mods = 'SUPER',       action = wezterm.action.DisableDefaultAssignment },
-    { key = 't',          mods = 'CTRL',        action = toggle_theme_action}
-    -- { key = 'e', mods = 'ALT', action = wezterm.action.ShowLauncherArgs { flags='LAUNCH_MENU_ITEMS' } },
+    { key = 't',          mods = 'CTRL',        action = toggle_theme_action},
+    { key = 'l',          mods = 'ALT',         action = wezterm.action.ShowLauncherArgs { flags='LAUNCH_MENU_ITEMS' } },
+    { key = 'o',          mods = 'ALT',         action = wezterm.action.ShowTabNavigator },
+    { key = '.',          mods = 'ALT',         action = wezterm.action.CloseCurrentTab { confirm = false } },
     -- { key = ',', mods = 'ALT', action = wezterm.action.PromptInputLine {
     --   description = "Rename tab",
     --   action = wezterm.action_callback(function(window, pane, line)

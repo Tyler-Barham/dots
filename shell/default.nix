@@ -25,6 +25,7 @@
     htop
     lazygit
     lazydocker
+    ncdu
 
     azure-storage-azcopy
   ];

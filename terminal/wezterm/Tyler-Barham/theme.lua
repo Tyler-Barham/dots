@@ -25,7 +25,7 @@ function M.set_colors(config)
     }
   end
 
-  config.window_background_opacity = 0.9
+  config.window_background_opacity = 0.8
 
   -- config.window_background_image = wezterm.config_dir .. '/Tyler-Barham/assets/background.gif'
   -- config.window_background_image_hsb = {

@@ -34,7 +34,7 @@
     zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
-      initExtra = builtins.readFile ./.zshrc;
+      initContent = builtins.readFile ./.zshrc;
     };
 
     tmux = {

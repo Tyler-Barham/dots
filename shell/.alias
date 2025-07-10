@@ -58,5 +58,5 @@ function conda-pyv() { conda env list | grep -v "^$\|#" | awk '{print $1;}' | xa
 function docker-restart() { sudo systemctl restart docker && docker start "$(docker ps -a -q --filter "status=exited")"; }
 function docker-up() { docker start "$(docker ps -a -q --filter "status=exited")"; }
 function docker-rm-exited() { docker rm "$(docker ps -a -q --filter "status=exited")"; }
-function docker-ip() { docker inspect -f '{{.Name}}: {{.HostConfig.NetworkMode}} @ {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$(docker ps -a -q)"; }
+function docker-ip() { docker inspect -f '{{.Name}}: {{.HostConfig.NetworkMode}} @ {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -a -q); }
 

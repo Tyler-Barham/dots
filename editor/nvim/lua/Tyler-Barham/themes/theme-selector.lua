@@ -16,6 +16,15 @@ local function load_dark()
   require('Tyler-Barham.themes.lualine').setup(lualine_theme)
 end
 
+function ThemeSelector.get_lualine_theme()
+  local theme_text = file_utils.read_file(theme_file) or ''
+  if string.match(theme_text, 'light') then
+    return require('Tyler-Barham.themes.light.lualine-colors')
+  elseif string.match(theme_text, 'dark') then
+    return require('Tyler-Barham.themes.dark.lualine-colors')
+  end
+end
+
 function ThemeSelector.init_theme()
   local theme_text = file_utils.read_file(theme_file) or ''
   if theme_text == '' then

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-image_name="dev:latest"
-container_name="${image_name/:/_}_dev-env"
+image_name="${IMAGE:-dev:latest}"
+container_name="${image_name/:/_}_dev-env" # Replace `:` with `_` and add suffix
+container_name=$(basename "$container_name") # Drop registry info from container name
 
 xhost +local:docker 1>/dev/null
 

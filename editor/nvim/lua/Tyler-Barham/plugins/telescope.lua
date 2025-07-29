@@ -32,15 +32,18 @@ telescope.setup({
     },
     preview = {
       mime_hook = function(filepath, bufnr, opts)
-        local is_image = function(filepath)
+        local is_image = function(imgpath)
           local image_extensions = {'png', 'jpg', 'jpeg', 'webp', 'ico', 'bmp'}   -- Supported image formats
-          local split_path = vim.split(filepath:lower(), '.', {plain=true})
+          local split_path = vim.split(imgpath:lower(), '.', {plain=true})
           local extension = split_path[#split_path]
           return vim.tbl_contains(image_extensions, extension)
         end
         if is_image(filepath) then
           local term = vim.api.nvim_open_term(bufnr, {})
           local function send_output(_, data, _ )
+            if not vim.api.nvim_buf_is_valid(bufnr) then
+              return
+            end
             for _, d in ipairs(data) do
               vim.api.nvim_chan_send(term, d..'\r\n')
             end

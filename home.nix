@@ -29,6 +29,7 @@
       pylint
       pynvim
       requests
+      seaborn
       setuptools
       scipy
       scikit-learn

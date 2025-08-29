@@ -19,6 +19,7 @@
     rclone
     gzip
     jq
+
     pistol
     # chafa -- gifs buggy. Using zypper version
 
@@ -26,6 +27,8 @@
     lazygit
     lazydocker
     ncdu
+
+    doxygen
 
     azure-storage-azcopy
   ];

@@ -78,6 +78,13 @@ telescope.setup({
     live_grep = {
       additional_args = {'--hidden'},
     },
+    buffers = {
+      mappings = {
+        i = {
+          ['<c-d>'] = actions.delete_buffer,
+        },
+      },
+    },
   },
 })
 

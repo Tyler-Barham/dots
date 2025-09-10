@@ -66,6 +66,7 @@
     ".zsh-hooks".source = ./.zsh-hooks;
 
     ".local/bin/docker-dev".source = ./docker-dev;
+    ".local/bin/docker-nv-ps".source = ./docker-nv-ps;
   };
 
   # Using mkorder to inject the tmux config between file creation

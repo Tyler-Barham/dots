@@ -1,11 +1,7 @@
 -- Setup language servers.
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 vim.lsp.set_log_level('off')
 
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
+vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
       runtime = {
@@ -31,38 +27,17 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.jedi_language_server.setup {
-  capabilities = capabilities
-}
-
--- lspconfig.clangd.setup {
---   capabilities = capabilities,
---   cmd = {
---     'docker-dev', '-i',
---     'clangd', '--background-index', '2>/dev/null'
---   },
---   filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
---   root_dir = lspconfig.util.root_pattern(
---     '.clangd',
---     '.clang-tidy',
---     '.clang-format',
---     'compile_commands.json',
---     'compile_flags.txt',
---     'configure.ac',
---     '.svn',
---     '.git'
---   ),
---   single_file_support = false,
--- }
-
-lspconfig.ccls.setup {
+vim.lsp.config('ccls', {
   cmd = {
     'docker-dev', '-i',
     'ccls'
   },
   filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
+  root_markers = { 'compile_commands.json', '.ccls', '.git' },
+  offset_encoding = 'utf-32',
+  workspace_required = true,
   single_file_support = false,
   init_options = {
     completion = {
@@ -75,22 +50,8 @@ lspconfig.ccls.setup {
       lsRanges = true,
     },
   },
-}
+})
 
--- lspconfig.kotlin_language_server.setup {
---   capabilities = capabilities
--- }
-
--- lspconfig.gdscript.setup {
---   capabilities = capabilities,
---   on_attach = function (client, _)
---     local _notify = client.notify
---     client.notify = function (method, params)
---       if method == 'textDocument/didClose' then
---         return -- Godot doesn't implement didClose yet
---       end
---       _notify(method, params)
---     end
---   end,
--- }
-
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('jedi_language_server')
+vim.lsp.enable('ccls')

@@ -1,4 +1,6 @@
-require('auto-session').setup({
+local AutoSession = require('auto-session')
+
+AutoSession.setup({
   pre_save_cmds    = {
     'lua require([[neo-tree]]).close_all()',
     'lua require([[trouble]]).close()',
@@ -8,4 +10,5 @@ require('auto-session').setup({
   }
 })
 
-vim.keymap.set('n', '<leader>fs', require('auto-session.session-lens').search_session, { noremap = true })
+vim.keymap.set('n', '<leader>fs', AutoSession.search, { noremap = true })
+

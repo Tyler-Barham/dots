@@ -161,17 +161,10 @@ function sp-art {
 }
 
 function sp-display {
-  # Calls display on the artUrl.
+  # Prints album atwork
 
-  require display
-  display $(sp-art)
-}
-
-function sp-feh {
-  # Calls feh on the artURl.
-
-  require feh
-  feh $(sp-art)
+  require chafa
+  curl -sL $(sp-art) | chafa -
 }
 
 function sp-url {
@@ -211,8 +204,7 @@ function sp-help {
   echo "  sp eval       - Return the metadata as a shell script"
   echo ""
   echo "  sp art        - Print the URL to the current track's album artwork"
-  echo "  sp display    - Display the current album artwork with \`display\`"
-  echo "  sp feh        - Display the current album artwork with \`feh\`"
+  echo "  sp display    - Display the current album artwork with \`chafa\`"
   echo ""
   echo "  sp url        - Print the HTTP URL for the currently playing track"
   echo "  sp clip       - Copy the HTTP URL to the X clipboard"
@@ -310,6 +302,8 @@ else
     # It is. Run it.
     shift
     eval "sp-$subcommand $@"
+  elif [[ "$subcommand" == *"help" ]]; then # Incase I've typed --help/-help/show-help/etc
+    sp-help
   else
     # It's not. Try a search.
     eval "sp-search $@"

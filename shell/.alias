@@ -6,6 +6,17 @@ alias chafa='chafa -f sixels'
 
 function silent() { "$@" >/dev/null 2>&1; }
 
+function chafa-url() {
+    if [ $# -lt 1 ]; then
+        echo "Usage: chafa-url <url> [chafa options...]"
+        return 1
+    fi
+
+    url="$1"
+    shift
+    curl -sL "$url" | chafa - "$@"
+}
+
 function make() {
     # Bypass bear
     if [[ "$*" == *"clean"* ]]; then

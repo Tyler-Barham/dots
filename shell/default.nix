@@ -19,6 +19,7 @@
     rclone
     gzip
     jq
+    viddy
 
     pistol
     # chafa -- gifs buggy. Using zypper version

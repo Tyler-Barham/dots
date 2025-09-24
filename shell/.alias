@@ -3,6 +3,7 @@
 alias rsync='rsync -ah --info=progress2 --info=name0'
 alias vimdiff='nvim -d'
 alias chafa='chafa -f sixels'
+alias watch='viddy'
 
 function silent() { "$@" >/dev/null 2>&1; }
 

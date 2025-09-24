@@ -119,11 +119,30 @@ function sp-metadata {
 function sp-current {
   # Prints the currently playing track in a friendly format.
   require column
+  text_data=$(sp-metadata \
+              | grep --color=never -E "(title)|(album)|(artist)" \
+              | sed 's/^\(.\)/\U\1/' \
+              | column -t -s'|')
+  text_lines=$(echo "$text_data" | wc -l)
 
-  sp-metadata \
-  | grep --color=never -E "(title)|(album)|(artist)" \
-  | sed 's/^\(.\)/\U\1/' \
-  | column -t -s'|'
+  # Run in a subshell and capture output
+  output=$( (require chafa) 2>&1 )
+  chafa_status=$?
+
+  # Can we print album artwork or only text
+  if [ $chafa_status -ne 0 ]; then
+    echo "$text_data"
+  else
+    img_width=10
+    img_height=4
+    curl -sL $(sp-art) | chafa --size ${img_width}x${img_height} -
+
+    printf "\033[%dA" $((img_height)) # Move cursor up
+    echo "$text_data" | while IFS= read -r line; do
+      printf "\033[%dC%s\n" $((img_width + 2)) "$line" # Output with cursor indented
+    done
+    printf "\033[%dB" $((img_height - text_lines)) # Move cursor back down
+  fi
 }
 
 function sp-current-oneline {
@@ -160,13 +179,14 @@ function sp-art {
   sp-metadata | grep "artUrl" | cut -d'|' -f2
 }
 
-function sp-display {
-  # Prints album atwork
-
-  require chafa
-  curl -sL $(sp-art) | chafa -
-}
-
+# Incorperated in sp-current
+# function sp-display {
+#   # Prints album atwork
+#
+#   require chafa
+#   curl -sL $(sp-art) | chafa -
+# }
+#
 function sp-url {
   # Prints the HTTP url.
 
@@ -204,7 +224,6 @@ function sp-help {
   echo "  sp eval       - Return the metadata as a shell script"
   echo ""
   echo "  sp art        - Print the URL to the current track's album artwork"
-  echo "  sp display    - Display the current album artwork with \`chafa\`"
   echo ""
   echo "  sp url        - Print the HTTP URL for the currently playing track"
   echo "  sp clip       - Copy the HTTP URL to the X clipboard"

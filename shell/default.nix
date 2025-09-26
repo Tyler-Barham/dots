@@ -66,8 +66,8 @@
     ".config/pistol/pistol.conf".source = ./pistol.conf;
     ".zsh-hooks".source = ./.zsh-hooks;
 
+    ".local/bin/mocker".source = ./mocker;
     ".local/bin/docker-dev".source = ./docker-dev;
-    ".local/bin/docker-nv-ps".source = ./docker-nv-ps;
   };
 
   # Using mkorder to inject the tmux config between file creation

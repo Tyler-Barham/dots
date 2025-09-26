@@ -1,0 +1,166 @@
+#!/bin/bash
+
+function require-containers {
+    status="$1"
+
+    if [[ -n "$status" ]]; then
+        count=$(docker ps -a --filter "status=$status" -q | wc -l)
+        if (( count == 0 )); then
+            echo "Error: No Docker containers with status '$status' found." >&2
+            exit 1
+        fi
+    else
+        count=$(docker ps -a -q | wc -l)
+        if (( count == 0 )); then
+            echo "Error: No Docker containers found." >&2
+            exit 1
+        fi
+    fi
+}
+
+function mocker-restart() {
+    # Restart docker daemon and all containers
+    sudo systemctl restart docker
+    mocker-startall
+}
+
+function mocker-startall() {
+    # Start exited containers
+    require-containers "exited"
+    docker start "$(docker ps -a -q --filter "status=exited")"
+}
+
+function mocker-clean-containers() {
+    # Remove exited containers
+    require-containers "exited"
+    docker rm "$(docker ps -a -q --filter "status=exited")"
+}
+
+function mocker-ips() {
+    # Show container IP addresses
+    require-containers
+    docker inspect -f '{{.Name}}: {{.HostConfig.NetworkMode}} @ {{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -a -q)
+}
+
+function mocker-images() {
+    # Show tags, grouped by image ID
+    docker images \
+        | awk 'NR==1 {print; next}
+        {
+            if ($3 != last && NR > 2) {
+                for (i=1;i<=maxlen;i++) printf "-";
+                printf "\n";
+            }
+            print;
+            last=$3;
+            if (length($0) > maxlen) maxlen = length($0)
+        }'
+}
+
+function mocker-nv-ps() {
+    # Show GPU processes, grouped by containers
+    require-containers "running"
+
+    #                  gpu  pid  util mem  command
+    output_format="    %-4s %-8s %-8s %-8s %s\n"
+    output_width=$(tput cols)
+
+    # Get running container IDs and names
+    containers=$(docker ps --format '{{.ID}} {{.Names}}')
+
+    echo_trim() {
+        text="$@"
+        if [ "${#text}" -gt "$output_width" ]; then
+            # Subtract 3 to account for '...'
+            echo "${text:0:output_width-3}..."
+        else
+            echo "$text"
+        fi
+    }
+
+    if [[ -z "$containers" ]]; then
+        echo_trim "No running containers."
+        exit 0
+    fi
+
+    # Loop through containers
+    while read -r cid cname; do
+        # Get PIDs of processes inside the container
+        pids=$(docker top "$cid" -eo pid | tail -n +2)
+        # Get list of all nvidia processes
+        readarray -t gpu_processes < <(nvidia-smi pmon -c 1 -s um | tail -n +3)
+
+        output_lines=()
+        for line in "${gpu_processes[@]}"; do
+            read -r gpu pid type sm mem enc dec jpg ofa fb ccpm command <<< "$line"
+            # Check if this PID is inside the container
+            for cpid in $pids; do
+                if [[ "$pid" == "$cpid" ]]; then
+                    if [[ -r /proc/$pid/cmdline ]]; then
+                        cmd_args=$(tr '\0' ' ' < /proc/$pid/cmdline)
+                    else
+                        cmd_args="$command"
+                    fi
+
+                    output=$(printf "$output_format" "$gpu" "$pid" "$sm" "$fb" "$cmd_args")
+                    output_lines+=("$output")
+                fi
+            done
+        done
+
+        echo_trim "Container: $cname ($cid)"
+
+        # Print processes or fallback
+        if [ ${#output_lines[@]} -eq 0 ]; then
+            echo_trim "    No GPU processes"
+        else
+            printf "$output_format" "GPU" "PID" "UTIL" "MEM" "COMMAND"
+            for l in "${output_lines[@]}"; do
+                echo_trim "$l"
+            done
+        fi
+
+    done <<< "$containers"
+}
+
+function mocker-help() {
+    # Show the help screen
+    echo "Usage: mocker COMMAND"
+    echo -e "A \e[4mM\e[0middleman for d\e[4mocker\e[0m commands"
+    echo ""
+    echo "Commands:"
+
+    # Scan the script for functions starting with 'mocker-' and extract comments
+    # The regex looks for lines like 'function mocker-xxx() {'
+    # and captures the comment lines immediately above it.
+    grep -E '^\s*function mocker-[a-zA-Z0-9_-]+\s*\(\)\s*\{' "$0" | while read -r line; do
+        # Get the function name
+        func_name=$(echo "$line" | awk '{print $2}' | sed 's/()//;s/mocker-//')
+
+        # Get the comment immediately preceding the function
+        func_comment=$(grep -A1 -E "^\s*function.*$func_name\s*\(\)" "$0" | tail -n1 | sed 's/^\s*#\s*//')
+
+        # Print function + comment
+        printf "  %-20s %s\n" "$func_name" "$func_comment"
+    done
+
+    echo ""
+    echo "All other commands are forwarded to docker"
+}
+
+subcommand="$1"
+
+if [[ -z "$subcommand" ]]; then
+    # No arguments given, print help.
+    mocker-help
+else
+    # Arguments given, check if it's a command.
+    if $(type mocker-$subcommand > /dev/null 2> /dev/null); then
+        # It is. Run it.
+        shift
+        eval "mocker-$subcommand $@"
+    else
+        docker "$@"
+    fi
+fi
+

@@ -67,6 +67,7 @@
     ".zsh-hooks".source = ./.zsh-hooks;
 
     ".local/bin/mocker".source = ./mocker;
+    ".zsh/completion/_mocker".source = ./_mocker;
     ".local/bin/docker-dev".source = ./docker-dev;
   };
 

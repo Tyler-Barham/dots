@@ -1,0 +1,34 @@
+#compdef mocker
+
+# Function to generate completions dynamically
+_mocker() {
+    local -a commands
+    local script_file=$(which mocker)
+
+    # Build a list of "name:desc" pairs for completion
+    commands=()
+
+    grep -E '^\s*function mocker-[a-zA-Z0-9_-]+\s*\(\)\s*\{' "$script_file" | while read -r line; do
+        # Get the function name
+        func_name=$(echo "$line" | awk '{print $2}' | sed 's/()//;s/mocker-//')
+
+        # Get the comment immediately preceding the function
+        func_comment=$(grep -A1 -E "^\s*function.*$func_name\s*\(\)" "$script_file" | tail -n1 | sed 's/^\s*#\s*//')
+
+        commands+=("${func_name}:${func_comment}")
+    done
+
+    _arguments \
+        '1:command:->cmd' \
+        '*::args:->args'
+
+    case $state in
+        cmd)
+            _describe 'command' commands
+            ;;
+    esac
+}
+
+# Register the completion function
+compdef _mocker mocker
+

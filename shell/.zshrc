@@ -83,3 +83,6 @@ fi
 
 [ -f $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme ] && source $HOME/.nix-profile/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit
+

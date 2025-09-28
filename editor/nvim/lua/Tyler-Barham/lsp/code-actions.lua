@@ -12,8 +12,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     local opts = { buffer = ev.buf }
 
-    local fileSwapper = require('Tyler-Barham.lsp.swap-between-files')
-
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,                opts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition,                 opts)
     vim.keymap.set('n', ',d', vim.lsp.buf.type_definition,            opts)
@@ -21,7 +19,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gT', vim.lsp.buf.signature_help,             opts)
     vim.keymap.set('n', 'gi', builtin.lsp_implementations,            opts)
     vim.keymap.set('n', 'gr', builtin.lsp_references,                 opts)
-    vim.keymap.set('n', 'gh', fileSwapper.swap_between_header_source, opts)
 
     vim.keymap.set('n', ',wa',  vim.lsp.buf.add_workspace_folder,     opts)
     vim.keymap.set('n', ',wr',  vim.lsp.buf.remove_workspace_folder,  opts)
@@ -36,4 +33,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- end, opts)
   end,
 })
+
+local fileSwapper = require('Tyler-Barham.lsp.swap-between-files')
+vim.keymap.set('n', 'gh', fileSwapper.swap_between_header_source, { silent = true, noremap = true })
 

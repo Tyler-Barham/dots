@@ -6,8 +6,9 @@
   home.packages = with pkgs; [
     spotify
     flameshot
-    netron
     weylus
+
+    netron
     (makeDesktopItem {
       name = "netron";
       desktopName = "Netron";

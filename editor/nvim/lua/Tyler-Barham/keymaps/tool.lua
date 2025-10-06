@@ -9,9 +9,9 @@ local lazygit = Terminal:new({
   hidden = true
 })
 
-function _G._lazygit_toggle()
+local function lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.keymap.set('n', '<leader>g', '<CMD>lua _lazygit_toggle()<CR>', opts)
+vim.keymap.set('n', '<leader>g', lazygit_toggle, opts)
 

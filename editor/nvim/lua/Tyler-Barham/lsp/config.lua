@@ -1,5 +1,5 @@
 -- Setup language servers.
-vim.lsp.set_log_level('off')
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.lsp.config('lua_ls', {
   settings = {

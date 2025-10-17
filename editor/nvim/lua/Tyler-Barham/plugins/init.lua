@@ -32,25 +32,25 @@ local plugins = {
   },
 
   -- Movement
-  {
-    'm4xshen/hardtime.nvim',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('Tyler-Barham.plugins.hardtime')
-    end,
-  },
-  {
-    'ThePrimeagen/harpoon',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('Tyler-Barham.plugins.harpoon')
-    end,
-  },
+  -- {
+  --   'm4xshen/hardtime.nvim',
+  --   dependencies = {
+  --     'MunifTanjim/nui.nvim',
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     require('Tyler-Barham.plugins.hardtime')
+  --   end,
+  -- },
+  -- {
+  --   'ThePrimeagen/harpoon',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     require('Tyler-Barham.plugins.harpoon')
+  --   end,
+  -- },
 
   -- cmp
   'hrsh7th/nvim-cmp',
@@ -68,6 +68,12 @@ local plugins = {
 
   -- Code
   'neovim/nvim-lspconfig',
+  {
+    'stevearc/conform.nvim',
+    config = function()
+      require('Tyler-Barham.plugins.conform')
+    end,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {

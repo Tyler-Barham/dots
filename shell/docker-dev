@@ -1,15 +1,12 @@
 #!/bin/bash
 
 image_name="${IMAGE:-dev:latest}"
-container_name="${image_name/:/_}_dev-env" # Replace `:` with `_` and add suffix
-container_name=$(basename "$container_name") # Drop registry info from container name
+container_name="$(docker images -q $image_name)_dev-env"
 
 xhost +local:docker 1>/dev/null
 
 container_status=$(docker inspect -f '{{.State.Running}}' "$container_name" 2>/dev/null)
 if [ -z "$container_status" ]; then
-
-    # --net=docker-custom \
 
     # Run the image
     docker run \

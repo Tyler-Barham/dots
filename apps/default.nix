@@ -7,6 +7,7 @@
     spotify
     flameshot
     weylus
+    drawio
 
     netron
     (makeDesktopItem {

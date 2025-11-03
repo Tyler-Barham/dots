@@ -25,12 +25,13 @@ end
 vim.keymap.set('n', '<leader>hd', diffthis_linelastchange, opts)
 
 -- Mappings for vimdiff
-vim.api.nvim_create_autocmd("BufWinEnter", {
+vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
-    if vim.wo.diff then
+    local has_conflict = vim.fn.search('<<<<<<<\\|=======\\|>>>>>>>', 'nw') ~= 0
+    if has_conflict then
       -- Accept LOCAL/REMOTE for the current conflict block
-      vim.keymap.set('n', '<leader>L', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget LO<CR>') end, { buffer = true })
-      vim.keymap.set('n', '<leader>R', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget RE<CR>') end, { buffer = true })
+      vim.keymap.set('n', '<leader>L', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget LO') end, { buffer = true })
+      vim.keymap.set('n', '<leader>R', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget RE') end, { buffer = true })
 
       -- Navigate between conflicts
       vim.keymap.set('n', ']x', function() vim.fn.search('<<<<<<<\\|=======\\|>>>>>>>', 'W') end, { buffer = true })

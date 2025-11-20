@@ -5,7 +5,7 @@
 
 
 ## About
-This repo contains config files for my dev tools, such as terminal emulator, terminal multiplexer, shell environment, editor, and useful scripts.  
+This repo contains config files for my dev tools, such as terminal emulator, terminal multiplexer, shell environment, editor, and useful scripts.
 Each of these configs are self-contained so that they can be easily copied around; however, this repo utilizes nix's [Home Manager](https://github.com/nix-community/home-manager) for dotfile management.
 
 ## Quickstart
@@ -15,23 +15,29 @@ Each of these configs are self-contained so that they can be easily copied aroun
    ln -sfn ./dots $HOME/.config/home-manager
    ```
    Optionally: `git submodule update --init --recursive`
-3. Install Nix on your linux distro
+2. Install Nix on your linux distro
    ```bash
    sh <(curl -L https://nixos.org/nix/install) --no-daemon
    ```
-4. Install Home Manager
+3. Install Home Manager
    ```bash
    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
    nix-channel --update
    nix-shell '<home-manager>' -A install
    ```
+4. Add your user / home directory / system to `homeConfigurations` in [flake.nix](./flake.nix)
 5. Start Home Manager to setup configs
    ```bash
-   home-manager switch
+   # First run
+   home-manager switch --flake $(realpath ~/.config/home-manager)#$USER@$HOSTNAME
+
+   # Subsequent runs
+   home-up
    ```
 
 ## What next?
-Install wezterm if you want to use the config in this repo, otherwise start any terminal emulator of your choice and run `tmux` to start the terminal multiplexer (with persistence) and get an interactive zsh shell.
+Wezterm is currently not installed through nix-packages due GPUs being managed outside of nix. Install wezterm if you want to use the config in this repo.  
+Otherwise start any terminal emulator of your choice and run `tmux` to start the terminal multiplexer (with persistence) and get an interactive zsh shell.
 
 ## Leader keys
 * tmux: `<alt>+w`

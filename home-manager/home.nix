@@ -4,7 +4,6 @@
   ...
 }:
 let
-  repo_root = builtins.dirOf ./.;
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -32,5 +31,5 @@ in
     ./modules/terminal
     ./modules/vcs
     ./modules/wm
-  ] ++ lib.optionals (builtins.pathExists "${repo_root}/secret-sauce/default.nix") [ "${repo_root}/secret-sauce" ];
+  ];
 }

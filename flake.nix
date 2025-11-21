@@ -8,6 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    secret-sauce = {
+      url = "git+file:/home/tBarham/Code/Personal/dots/secret-sauce";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -25,7 +30,7 @@
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      mkHome = { system, user, homeDir, extraModules ? [ ] }: 
+      mkHome = { system, user, homeDir, extraModules ? [ ] }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
 
@@ -51,7 +56,7 @@
           user = "tBarham";
           homeDir = "/home/tBarham";
           extraModules = [
-            # ./machines/laptop.nix
+            "${inputs.secret-sauce}/default.nix"
           ];
         };
 
@@ -60,7 +65,7 @@
           user = "temp";
           homeDir = "/home/temp";
           extraModules = [
-            # ./machines/temp.nix
+            # ./machine/vm/temp.nix
           ];
         };
       };

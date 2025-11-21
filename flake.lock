@@ -39,7 +39,23 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "secret-sauce": "secret-sauce"
+      }
+    },
+    "secret-sauce": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763676835,
+        "narHash": "sha256-L1aQ7TuXBNr0juYlqHlnlxqdp3z2lffblvCHBLx/Enw=",
+        "rev": "d8f80eeb477a71cb9bda20016d780ee40ad4f921",
+        "revCount": 15,
+        "type": "git",
+        "url": "file:/home/tBarham/Code/Personal/dots/secret-sauce"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:/home/tBarham/Code/Personal/dots/secret-sauce"
       }
     }
   },

@@ -60,6 +60,15 @@
           ];
         };
 
+        "tBarham@KatoPC-Tyler" = mkHome {
+          system = "x86_64-linux";
+          user = "tBarham";
+          homeDir = "/home/tBarham";
+          extraModules = [
+            "${inputs.secret-sauce}/default.nix"
+          ];
+        };
+
         "temp@vm" = mkHome {
           system = "x86_64-linux";
           user = "temp";

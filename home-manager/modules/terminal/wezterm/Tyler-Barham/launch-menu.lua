@@ -4,7 +4,7 @@ function M.set_launch_menu(config)
   config.launch_menu = {
     {
       label = "New tab",
-      args = { 'zsh' }
+      args = { }
     },
     {
       label = "Tmux",

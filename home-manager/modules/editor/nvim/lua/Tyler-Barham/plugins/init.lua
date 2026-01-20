@@ -253,7 +253,7 @@ local opts = {
     enabled = false,
     hererocks = false,
   },
-  lockfile = "~/.config/home-manager/editor/nvim/lazy-lock.json",
+  lockfile = "~/.config/home-manager/home-manager/modules/editor/nvim/lazy-lock.json",
 }
 
 require('lazy').setup(plugins, opts)

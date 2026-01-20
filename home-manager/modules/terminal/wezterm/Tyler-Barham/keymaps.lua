@@ -19,7 +19,8 @@ function M.set_keymaps(config)
     { key = 't',          mods = 'CTRL',        action = toggle_theme_action},
     { key = 'a',          mods = 'ALT',         action = wezterm.action.ShowLauncherArgs { flags='LAUNCH_MENU_ITEMS' } },
     { key = 'p',          mods = 'ALT',         action = wezterm.action.ShowTabNavigator },
-    { key = ';',          mods = 'ALT',         action = wezterm.action.CloseCurrentTab { confirm = false } },
+    { key = ';',          mods = 'ALT',         action = wezterm.action.ActivateTabRelative(1) },
+    { key = '/',          mods = 'ALT',         action = wezterm.action.CloseCurrentTab { confirm = false } },
     -- { key = ',', mods = 'ALT', action = wezterm.action.PromptInputLine {
     --   description = "Rename tab",
     --   action = wezterm.action_callback(function(window, pane, line)

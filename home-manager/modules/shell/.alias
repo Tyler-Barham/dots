@@ -46,13 +46,20 @@ elif [[ "$(cat /proc/$$/comm)" == "zsh" ]]; then
 fi
 
 function ips() {
-    local ifaces=($(ip -br a | awk -F '[[:space:]]+' '{if ($2=="UP") {print $1}}'))
+    local ifaces=($(ip --color=never -br a | awk -F '[[:space:]]+' '{if ($2=="UP") {print $1}}'))
     for ifa in ${ifaces[@]}; do
         if [[ "$ifa" == "docker"* || "$ifa" == *"tun"* || "$ifa" == "lo" ]]; then
             continue;
         fi
-        sudo arp-scan --interface "$ifa" --localnet --plain;
+
+        # Scan the iface and print indented output
+        echo "$ifa:"
+        sudo arp-scan --interface "$ifa" --localnet --plain | sed 's/^/\t/'
+
+        # Output an empty line if not the last iface in the loop
+        [[ $ifa != "${ifaces[-1]}" ]] && echo ""
     done
+
 }
 function lg() { lazygit; }
 function lzd() { lazydocker; }

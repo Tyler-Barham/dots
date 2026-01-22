@@ -14,7 +14,7 @@ export VISUAL="$EDITOR"
 export SUDO_EDITOR="$EDITOR"
 
 export LESSOPEN="| pygmentize %s 2> /dev/null"
-export LESS=' -R '
+export LESS=' -R -I '
 
 export FZF_DEFAULT_OPTS='
     --color=fg:#504945,bg:-1,hl:#fabd2f,gutter:-1

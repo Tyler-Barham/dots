@@ -3,6 +3,7 @@
 alias home-up="home-manager switch --flake $(realpath ~/.config/home-manager)#$USER@$HOSTNAME"
 alias rsync='rsync -ah --info=progress2 --info=name0'
 alias vimdiff='nvim -d'
+alias ip='ip --color'
 alias chafa='chafa -f sixels'
 alias watch='viddy'
 

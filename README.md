@@ -13,6 +13,9 @@ Each of these configs are self-contained so that they can be easily copied aroun
    ```bash
    git clone git@github.com:Tyler-Barham/dots.git
    ln -sfn ./dots $HOME/.config/home-manager
+
+   # Manage yazi externally to nix for now
+   ln -sfn ~/.config/home-manager/home-manager/modules/file-manager/yazi ~/.config/yazi
    ```
    Optionally: `git submodule update --init --recursive`
 2. Install Nix on your linux distro

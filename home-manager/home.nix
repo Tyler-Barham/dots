@@ -28,6 +28,7 @@ in
     ./modules/dev
     ./modules/editor
     ./modules/shell
+    ./modules/file-manager
     ./modules/terminal
     ./modules/vcs
     ./modules/wm

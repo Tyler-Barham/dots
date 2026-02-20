@@ -1,0 +1,27 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[mgr]
+ratio       = [ 0, 5, 5 ]
+show_hidden = true
+linemode    = "size"
+sort_by     = "natural"
+
+[preview]
+wrap       = "yes"
+max_width  = 1500
+max_height = 1500
+
+[tasks]
+image_alloc = 0
+image_bound = [ 0, 0 ]
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*"
+run = "git"
+
+[[plugin.prepend_fetchers]]
+id  = "git"
+url = "*/"
+run = "git"
+

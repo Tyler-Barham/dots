@@ -2,7 +2,12 @@
 
 [mgr]
 prepend_keymap = [
-    { on = "<PageUp>",   run = "seek -5", desc = "Seek up 5 units in the preview" },
-    { on = "<PageDown>", run = "seek 5",  desc = "Seek up 5 units in the preview" },
+    # Swap q/Q mappings with eachother
+    { on = "q",             run = "quit --no-cwd-file", desc = "Quit without outputting cwd-file" },
+    { on = "Q",             run = "quit",               desc = "Quit the process" },
+
+    # Navigate preview with pgup/pgdown
+    { on = "<PageUp>",      run = "seek -5",            desc = "Seek up 5 units in the preview" },
+    { on = "<PageDown>",    run = "seek 5",             desc = "Seek up 5 units in the preview" },
 ]
 

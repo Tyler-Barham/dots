@@ -9,7 +9,7 @@
     typescript
     sassc
     compiledb
-    (python312.withPackages(ppkgs: with ppkgs; [
+    (python314.withPackages(ppkgs: with ppkgs; [
       ipython
       jupyter
       matplotlib

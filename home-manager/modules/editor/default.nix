@@ -13,7 +13,7 @@
       extraPackages = with pkgs; [
         # LSP
         lua-language-server
-        python312Packages.jedi-language-server
+        python314Packages.jedi-language-server
 
         # DAP
         vscode-extensions.ms-vscode.cpptools

@@ -9,10 +9,10 @@
 
   programs = {
     yazi = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      shellWrapperName = "";
+      # enable=true causes an alias in the generated rc file. We have our own
+      # .alias file that we source. If we also set shellWrapperName="", it'll
+      # autorun this alias on every shell start
+      enable = false;
     };
   };
 

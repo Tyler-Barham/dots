@@ -28,13 +28,16 @@ end
 function ThemeSelector.init_theme()
   local theme_text = file_utils.read_file(theme_file) or ''
   if theme_text == '' then
-    file_utils.write_file(theme_file, 'light')
-    theme_text = 'light'
+    file_utils.write_file(theme_file, 'dark')
+    theme_text = 'dark'
   end
 
   if string.match(theme_text, 'light') then
     load_light()
   elseif string.match(theme_text, 'dark') then
+    load_dark()
+  else
+    vim.notify("Defaulting to dark theme", vim.log.levels.WARN)
     load_dark()
   end
 end

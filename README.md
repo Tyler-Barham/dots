@@ -12,7 +12,7 @@ Each of these configs are self-contained so that they can be easily copied aroun
 1. Clone this repo
    ```bash
    git clone git@github.com:Tyler-Barham/dots.git
-   ln -sfn ./dots $HOME/.config/home-manager
+   ln -sfn $PWD/dots $HOME/.config/home-manager
 
    # Manage yazi externally to nix for now
    ln -sfn ~/.config/home-manager/home-manager/modules/file-manager/yazi ~/.config/yazi
@@ -32,6 +32,8 @@ Each of these configs are self-contained so that they can be easily copied aroun
 5. Start Home Manager to setup configs
    ```bash
    # First run
+   sudo mkdir /etc/nix/
+   echo "experimental-features = nix-command flakes" | sudo tee -a /etc/nix/nix.conf
    home-manager switch --flake $(realpath ~/.config/home-manager)#$USER@$HOSTNAME
 
    # Subsequent runs

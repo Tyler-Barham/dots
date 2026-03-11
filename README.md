@@ -39,6 +39,7 @@ Each of these configs are self-contained so that they can be easily copied aroun
    # Subsequent runs
    home-up
    ```
+6. Update the git config within [.gitconfig-Personal](./home-manager/modules/vcs/.gitconfig-Personal)
 
 ## What next?
 Wezterm is currently not installed through nix-packages due GPUs being managed outside of nix. Install wezterm if you want to use the config in this repo.  

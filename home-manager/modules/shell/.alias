@@ -6,6 +6,7 @@ alias vimdiff='nvim -d'
 alias ip='ip --color'
 alias chafa='chafa -f sixels'
 alias watch='viddy'
+alias gdm-sync='sudo cp ~/.config/monitors.xml /etc/xdg/monitors.xml && sudo chmod 644 /etc/xdg/monitors.xml'
 
 function silent() { "$@" >/dev/null 2>&1; }
 

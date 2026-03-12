@@ -76,6 +76,7 @@ fi
 if [[ $TMUX_PANE ]]; then
     # local tmux_id="$(tmux display -p -F '#{window_index}_#{pane_index}')"
     # HISTFILE=$HOME/.bash_history/tmux_$tmux_id # Fails when ressurecting
+    mkdir -p $HOME/.tmux_history
     HISTFILE=$HOME/.tmux_history/tmux_${TMUX_PANE:1}
 else
     HISTFILE=$HOME/.bash_history

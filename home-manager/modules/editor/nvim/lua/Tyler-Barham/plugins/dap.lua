@@ -33,11 +33,11 @@ require('dapui').setup({
       elements = {
         {
           id = 'stacks',
-          size = 0.2
+          size = 0.3
         },
         {
           id = 'scopes',
-          size = 0.8
+          size = 0.7
         },
       },
       position = 'left',

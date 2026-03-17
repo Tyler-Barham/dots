@@ -51,7 +51,7 @@ dap.configurations.cpp = {
       return args
     end,
     MIMode = 'gdb',
-    miDebuggerPath = '/usr/bin/gdb',
+    miDebuggerPath = 'gdb',
     setupCommands = {
       -- pretty printing slows us down... 10s per step
       {

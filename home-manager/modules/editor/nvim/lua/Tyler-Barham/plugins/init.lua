@@ -19,6 +19,14 @@ vim.g.maplocalleader = '/'
 local plugins = {
   -- Auto handlers
   {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('Tyler-Barham.plugins.dashboard')
+    end,
+    dependencies = { {'nvim-tree/nvim-web-devicons'} }
+  },
+  {
     'rmagatti/auto-session',
     config = function()
       require('Tyler-Barham.plugins.auto-session')

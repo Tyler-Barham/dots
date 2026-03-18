@@ -4,10 +4,14 @@ local group_cursorline = vim.api.nvim_create_augroup('UserCursorLine', {})
 vim.api.nvim_create_autocmd({'VimEnter', 'WinEnter', 'BufWinEnter'}, {
   group = group_cursorline,
   callback = function()
-    if vim.bo.filetype == '' or string.find(string.lower(vim.bo.filetype), 'telescope')then
-      vim.cmd('setlocal nocursorline')
+    local ft = vim.bo.filetype
+    if ft == ''
+      or ft == 'dashboard'
+      or ft:lower():find('telescope')
+    then
+      vim.opt_local.cursorline = false
     else
-      vim.cmd('setlocal cursorline')
+      vim.opt_local.cursorline = true
     end
   end,
 })
@@ -15,7 +19,7 @@ vim.api.nvim_create_autocmd({'VimEnter', 'WinEnter', 'BufWinEnter'}, {
 vim.api.nvim_create_autocmd({'WinLeave'}, {
   group = group_cursorline,
   callback = function()
-    vim.cmd('setlocal nocursorline')
+    vim.opt_local.cursorline = false
   end,
 })
 

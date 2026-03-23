@@ -16,7 +16,7 @@
       genericName = "Neural network viewer";
       comment = "Visualizer for neural network, deep learning and machine learning models";
       icon = "netron";
-      exec = "netron";
+      exec = "netron --ozone-platform=x11";
       terminal = false;
       mimeTypes = [ "application/x-onnx" ];
       categories = [ "Development" ];

@@ -10,6 +10,7 @@
     sassc
     compiledb
     (python314.withPackages(ppkgs: with ppkgs; [
+      pyside6
       ipython
       jupyter
       matplotlib

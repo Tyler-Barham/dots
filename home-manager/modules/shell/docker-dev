@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 image_name="${IMAGE:-dev:latest}"
 container_name="$(docker images -q $image_name)_dev-env"

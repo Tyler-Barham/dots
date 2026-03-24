@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+id=$(cat ~/.cache/last_notification_id 2>/dev/null)
+
+if [ -n "$id" ]; then
+    gdbus call --session --dest org.freedesktop.Notifications --object-path /org/freedesktop/Notifications --method org.freedesktop.Notifications.CloseNotification "$id" >/dev/null 2>&1
+fi
+

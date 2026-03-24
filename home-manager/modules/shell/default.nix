@@ -70,6 +70,7 @@
     ".zsh/completion/_mocker".source = ./_mocker;
     ".local/bin/docker-dev".source = ./docker-dev;
     ".local/bin/tmux-toggleterm".source = ./tmux-toggleterm;
+    ".local/bin/notify-send-dismiss-last".source = ./notify-send-dismiss-last;
   };
 
   # Using mkorder to inject the tmux config between file creation

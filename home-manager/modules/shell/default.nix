@@ -69,6 +69,7 @@
     ".local/bin/mocker".source = ./mocker;
     ".zsh/completion/_mocker".source = ./_mocker;
     ".local/bin/docker-dev".source = ./docker-dev;
+    ".local/bin/tmux-toggleterm".source = ./tmux-toggleterm;
   };
 
   # Using mkorder to inject the tmux config between file creation

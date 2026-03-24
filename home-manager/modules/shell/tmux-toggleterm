@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+width=${1:-80%}
+height=${2:-80%}
+
+# Get tmux pane info
+pane_pid=$(tmux display-message -p "#{pane_pid}")
+pane_pwd=$(readlink /proc/$pane_pid/cwd 2>/dev/null || lsof -a -p $pane_pid -d cwd -Fn 2>/dev/null | grep '^n' | cut -c2-)
+
+# Get nvim info, if it exists
+nvim_pid=$(pgrep -P $pane_pid 2>/dev/null)
+nvim_socket=$(awk 'NR>1 && $8 ~ /nvim/ {print $8}' /proc/$nvim_pid/net/unix 2>/dev/null)
+
+# Set the current dir, based on nvim session cwd, or shell cwd
+if [ -n "$nvim_socket" ]; then
+    pwd=$(nvim --server "$nvim_socket" --remote-expr "getcwd()" 2>/dev/null)
+else
+    pwd="$pane_pwd"
+fi
+
+session_name="popup-$(basename "$pwd")"
+
+# Create/attach or detach the tmux session
+if [ "$(tmux display-message -p -F "#{session_name}")" = "$session_name" ]; then
+    tmux detach-client
+else
+    tmux popup -d "$pwd" -T "$session_name" -b rounded -xC -yC -w$width -h$height -E "tmux attach -t '$session_name' || tmux new -s '$session_name'"
+fi

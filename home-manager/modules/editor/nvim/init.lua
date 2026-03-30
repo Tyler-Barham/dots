@@ -1,4 +1,5 @@
 require('Tyler-Barham.options')
+require('Tyler-Barham.globals')
 require('Tyler-Barham.plugins')
 require('Tyler-Barham.keymaps')
 require('Tyler-Barham.lsp')

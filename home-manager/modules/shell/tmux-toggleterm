@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-width=${1:-80%}
-height=${2:-80%}
+width=${1:-90}
+height=${2:-90}
 
 # Get tmux pane info
 pane_pid=$(tmux display-message -p "#{pane_pid}")
@@ -20,9 +20,19 @@ fi
 
 session_name="popup-$(basename "$pwd")"
 
+x_pos="C"
+y_pos="C"
+
+if (( width < 50 )); then
+    x_pos="R"
+fi
+if (( height < 50 )); then
+    y_pos="S"
+fi
+
 # Create/attach or detach the tmux session
 if [ "$(tmux display-message -p -F "#{session_name}")" = "$session_name" ]; then
     tmux detach-client
 else
-    tmux popup -d "$pwd" -T "$session_name" -b rounded -xC -yC -w$width -h$height -E "tmux attach -t '$session_name' || tmux new -s '$session_name'"
+    tmux popup -d "$pwd" -T "$session_name" -b rounded -x$x_pos -y$y_pos -w$width% -h$height% -E "tmux attach -t '$session_name' || tmux new -s '$session_name'"
 fi

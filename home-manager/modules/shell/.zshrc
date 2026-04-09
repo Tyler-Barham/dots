@@ -35,6 +35,10 @@ export FZF_CTRL_R_OPTS='--preview-window hidden' # history. Hide preivew window
 export FZF_CTRL_T_OPTS='' # files/dirs to cli. Use default preivew
 export FZF_COMPLETION_OPTS='' # options for **
 
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="~/.npm-global/bin/:$PATH"
+
 # Bind alt-r to open history (ctrl-r will still be avail as the default binding)
 zle     -N             fzf-history-widget
 bindkey -M emacs '\er' fzf-history-widget

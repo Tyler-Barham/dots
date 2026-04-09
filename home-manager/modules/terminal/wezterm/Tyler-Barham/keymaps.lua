@@ -16,7 +16,6 @@ function M.set_keymaps(config)
   config.keys = {
     { key = 'Backspace',  mods = 'ALT',         action = wezterm.action.CloseCurrentPane { confirm = false } },
     { key = 'w',          mods = 'SUPER',       action = wezterm.action.DisableDefaultAssignment },
-    { key = 't',          mods = 'CTRL',        action = toggle_theme_action},
     { key = 'a',          mods = 'ALT',         action = wezterm.action.ShowLauncherArgs { flags='LAUNCH_MENU_ITEMS' } },
     { key = 'p',          mods = 'ALT',         action = wezterm.action.ShowTabNavigator },
     { key = ';',          mods = 'ALT',         action = wezterm.action.ActivateTabRelative(1) },

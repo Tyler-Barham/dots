@@ -19,6 +19,3 @@ vim.keymap.set('n', '<leader>nb', function() neotree_cmd.execute({ toggle=true, 
 -- To update the guessed indent (don't use <leader>gi, or lazygit will delay)
 vim.keymap.set('n', '<leader>i', function() require('guess-indent').set_from_buffer() end, opts)
 
--- Hide notification
-vim.keymap.set('n', '<leader><leader>', function() require('notify').dismiss() end, opts)
-

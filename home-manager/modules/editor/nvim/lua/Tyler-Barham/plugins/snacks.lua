@@ -1,11 +1,9 @@
 local Snacks = require('snacks')
 
 Snacks.setup({
-  notifier = { enabled = true },
   image = { enabled = false }, -- Need to setup support for LaTeX and Mermaid first
-  indent = {
-    enabled = true,
-  },
+  indent = { enabled = true },
+  notifier = { enabled = true },
   dashboard = {
     preset = {
       keys = {
@@ -42,3 +40,5 @@ Snacks.setup({
 local opts = { silent = true, noremap = true }
 
 vim.keymap.set('n', '<leader>g', Snacks.lazygit.open, opts)
+vim.keymap.set('n', '<leader>n', Snacks.notifier.show_history, opts)
+vim.keymap.set('n', '<leader><leader>', Snacks.notifier.hide, opts)

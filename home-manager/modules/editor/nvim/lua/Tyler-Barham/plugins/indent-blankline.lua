@@ -19,7 +19,7 @@ require('ibl').setup({
       'TelescopeResults',
 
       -- extras
-      'dashboard',
+      'snacks_dashboard',
     },
   },
 })

@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({'VimEnter', 'WinEnter', 'BufWinEnter'}, {
   callback = function()
     local ft = vim.bo.filetype
     if ft == ''
-      or ft == 'dashboard'
+      or ft == 'snacks_dashboard'
       or ft:lower():find('telescope')
     then
       vim.opt_local.cursorline = false

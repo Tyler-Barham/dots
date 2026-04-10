@@ -4,7 +4,7 @@ AutoSession.setup({
   auto_restore = false,
 
   suppressed_dirs = { "~/" },
-  bypass_save_filetypes = { "dashboard" },
+  bypass_save_filetypes = { "snacks_dashboard" },
 
   session_lens = {
     load_on_setup = true,

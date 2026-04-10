@@ -116,6 +116,13 @@ local plugins = {
       require('Comment').setup()
     end,
   },
+  {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = function()
+      require('Tyler-Barham.plugins.claude')
+    end,
+  },
 
   -- UI enhance
   {

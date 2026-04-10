@@ -162,6 +162,7 @@ local plugins = {
   -- UI components
   {
     'folke/snacks.nvim',
+    priority = 1000,
     config = function()
       require('Tyler-Barham.plugins.snacks')
     end,

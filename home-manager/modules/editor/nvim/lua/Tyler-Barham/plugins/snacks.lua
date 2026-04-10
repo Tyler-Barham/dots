@@ -3,6 +3,7 @@ local Snacks = require('snacks')
 Snacks.setup({
   image = { enabled = false }, -- Need to setup support for LaTeX and Mermaid first
   indent = { enabled = true },
+  input = { enabled = true },
   notifier = { enabled = true },
   dashboard = {
     preset = {

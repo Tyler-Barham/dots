@@ -118,12 +118,6 @@ local plugins = {
 
   -- UI enhance
   {
-    'stevearc/dressing.nvim',
-    config = function()
-      require('Tyler-Barham.plugins.dressing')
-    end,
-  },
-  {
     'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',

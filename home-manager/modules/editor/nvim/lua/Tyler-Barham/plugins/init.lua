@@ -140,13 +140,6 @@ local plugins = {
   },
   'onsails/lspkind.nvim',
   {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    config = function()
-      require('Tyler-Barham.plugins.indent-blankline')
-    end,
-  },
-  {
     'nvimdev/hlsearch.nvim',
     config = function()
       require('hlsearch').setup()

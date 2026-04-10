@@ -21,7 +21,7 @@ local plugins = {
     config = function()
       require('Tyler-Barham.plugins.dashboard')
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'} }
+    dependencies = { {'nvim-tree/nvim-web-devicons'} },
   },
   {
     'rmagatti/auto-session',
@@ -117,8 +117,8 @@ local plugins = {
     end,
   },
   {
-    "coder/claudecode.nvim",
-    dependencies = { "folke/snacks.nvim" },
+    'coder/claudecode.nvim',
+    dependencies = { 'folke/snacks.nvim' },
     config = function()
       require('Tyler-Barham.plugins.claude')
     end,
@@ -158,16 +158,22 @@ local plugins = {
     'nvimdev/hlsearch.nvim',
     config = function()
       require('hlsearch').setup()
-    end
+    end,
   },
   {
     "sphamba/smear-cursor.nvim",
     config = function()
       require('Tyler-Barham.plugins.smear-cursor')
-    end
+    end,
   },
 
   -- UI components
+  {
+    'folke/snacks.nvim',
+    config = function()
+      require('Tyler-Barham.plugins.snacks')
+    end,
+  },
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
@@ -193,12 +199,6 @@ local plugins = {
     'folke/noice.nvim',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      {
-        'rcarriga/nvim-notify',
-        config = function()
-          require('Tyler-Barham.plugins.notify')
-        end,
-      },
     },
     config = function()
       require('Tyler-Barham.plugins.noice')
@@ -220,7 +220,7 @@ local plugins = {
     'MagicDuck/grug-far.nvim',
     config = function()
       require('Tyler-Barham.plugins.grug-far')
-    end
+    end,
   },
 
   -- Util

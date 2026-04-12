@@ -1,4 +1,7 @@
 local Snacks = require('snacks')
+local Header = require('Tyler-Barham.themes.header')
+
+local header = require('Tyler-Barham.themes.header')
 
 Snacks.setup({
   image = { enabled = false }, -- Need to setup support for LaTeX and Mermaid first
@@ -15,20 +18,7 @@ Snacks.setup({
         { icon = "󰒲 ", key = "l", desc = "Lazy",            action = ":Lazy", enabled = package.loaded.lazy ~= nil },
         { icon = " ", key = "q", desc = "Quit",            action = ":qa" },
       },
-      header = [[
- __    __          __ __                                              __       __ 
-|  \  |  \        |  \  \                                            |  \     |  \
-| ▓▓  | ▓▓ ______ | ▓▓ ▓▓ ______       __   __   __  ______   ______ | ▓▓ ____| ▓▓
-| ▓▓__| ▓▓/      \| ▓▓ ▓▓/      \     |  \ |  \ |  \/      \ /      \| ▓▓/      ▓▓
-| ▓▓    ▓▓  ▓▓▓▓▓▓\ ▓▓ ▓▓  ▓▓▓▓▓▓\    | ▓▓ | ▓▓ | ▓▓  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ▓▓  ▓▓▓▓▓▓▓
-| ▓▓▓▓▓▓▓▓ ▓▓    ▓▓ ▓▓ ▓▓ ▓▓  | ▓▓    | ▓▓ | ▓▓ | ▓▓ ▓▓  | ▓▓ ▓▓   \▓▓ ▓▓ ▓▓  | ▓▓
-| ▓▓  | ▓▓ ▓▓▓▓▓▓▓▓ ▓▓ ▓▓ ▓▓__/ ▓▓    | ▓▓_/ ▓▓_/ ▓▓ ▓▓__/ ▓▓ ▓▓     | ▓▓ ▓▓__| ▓▓
-| ▓▓  | ▓▓\▓▓     \ ▓▓ ▓▓\▓▓    ▓▓     \▓▓   ▓▓   ▓▓\▓▓    ▓▓ ▓▓     | ▓▓\▓▓    ▓▓
- \▓▓   \▓▓ \▓▓▓▓▓▓▓\▓▓\▓▓ \▓▓▓▓▓▓       \▓▓▓▓▓\▓▓▓▓  \▓▓▓▓▓▓ \▓▓      \▓▓ \▓▓▓▓▓▓▓
-
-
-
-      ]],
+      header = Header.hello_world,
     },
     sections = {
       { section = 'header' },

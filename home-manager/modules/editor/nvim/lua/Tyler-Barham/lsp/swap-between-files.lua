@@ -3,12 +3,12 @@ local M = {}
 -- Many-to-many mapping of file extensions for possible matches
 local filetype_map = {
   {
-    { ".c", ".cpp", ".cxx", ".cc", ".cppm" },
-    { ".h", ".hpp", ".hxx", ".hh" }
+    { '.c', '.cpp', '.cxx', '.cc', '.cppm' },
+    { '.h', '.hpp', '.hxx', '.hh' }
   },
   {
-    { ".cu" },
-    { ".cuh" }
+    { '.cu' },
+    { '.cuh' }
   },
 }
 

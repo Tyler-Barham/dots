@@ -25,7 +25,7 @@ end
 vim.keymap.set('n', '<leader>hd', diffthis_linelastchange, opts)
 
 -- Mappings for vimdiff
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function()
     local conflict_marker = '<<<<<<<\\|=======\\|>>>>>>>'
     local has_conflict = vim.fn.search(conflict_marker, 'nw') ~= 0

@@ -17,7 +17,7 @@ Snacks.setup({
     matcher = {
       frecency = true,
     },
-    actions = require("trouble.sources.snacks").actions,
+    actions = require('trouble.sources.snacks').actions,
     win = {
       input = {
         keys = {

@@ -131,7 +131,7 @@ local plugins = {
     end,
   },
   {
-    "sphamba/smear-cursor.nvim",
+    'sphamba/smear-cursor.nvim',
     config = function()
       require('Tyler-Barham.plugins.smear-cursor')
     end,
@@ -201,7 +201,7 @@ local opts = {
     enabled = false,
     hererocks = false,
   },
-  lockfile = "~/.config/home-manager/home-manager/modules/editor/nvim/lazy-lock.json",
+  lockfile = '~/.config/home-manager/home-manager/modules/editor/nvim/lazy-lock.json',
 }
 
 require('lazy').setup(plugins, opts)

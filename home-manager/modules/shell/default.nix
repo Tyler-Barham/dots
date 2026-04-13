@@ -21,6 +21,7 @@
     jq
     viddy
 
+    lolcat
     pistol
     # chafa -- gifs buggy. Using zypper version
 

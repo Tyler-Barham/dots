@@ -48,10 +48,16 @@ Snacks.setup({
         { icon = "󰒲 ", key = "l", desc = "Lazy",            action = ":Lazy", enabled = package.loaded.lazy ~= nil },
         { icon = " ", key = "q", desc = "Quit",            action = ":qa" },
       },
-      header = Header.hello_world,
     },
     sections = {
-      { section = 'header' },
+      {
+        section = 'terminal',
+        align = 'center',
+        cmd = "echo '''" .. Header.hello_world .. "''' | lolcat -F 0.05 -S 80",
+        height = 13,
+        width = 82,
+        indent = -12,
+      },
       { section = 'keys', gap = 1, padding = 1 },
       { section = 'startup' },
     },

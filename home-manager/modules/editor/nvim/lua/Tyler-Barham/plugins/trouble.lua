@@ -8,7 +8,7 @@ require('trouble').setup({
 vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = 'Trouble',
   callback = function(event)
-    if require('trouble.config').options.mode ~= 'telescope' then
+    if require('trouble.config').options.mode ~= 'snacks' then
       return
     end
 

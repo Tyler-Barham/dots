@@ -8,7 +8,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local builtin = require('telescope.builtin')
+    -- local builtin = require('telescope.builtin')
+    local builtin = require('snacks').picker
 
     local opts = { buffer = ev.buf }
 

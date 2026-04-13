@@ -1,13 +1,42 @@
 local Snacks = require('snacks')
 local Header = require('Tyler-Barham.themes.header')
 
-local header = require('Tyler-Barham.themes.header')
+local search_ignores = {
+  'LanguageTranslations/',
+  '*Tests/TestFiles/',
+}
 
 Snacks.setup({
   image = { enabled = false }, -- Need to setup support for LaTeX and Mermaid first
   indent = { enabled = true },
   input = { enabled = true },
   notifier = { enabled = true },
+  picker = {
+    enabled = true,
+    matcher = {
+      frecency = true,
+    },
+    actions = require("trouble.sources.snacks").actions,
+    win = {
+      input = {
+        keys = {
+          ['<Esc>']       = { 'cancel',               mode = { 'i', 'n' } },
+          ['<PageUp>']    = { 'preview_scroll_up',    mode = { 'i', 'n' } },
+          ['<PageDown>']  = { 'preview_scroll_down',  mode = { 'i', 'n' } },
+          ['<M-t>']       = { 'trouble_open',         mode = { 'i', 'n' } },
+          ['<M-r>']       = { 'toggle_live',          mode = { 'i', 'n' } },
+        },
+      },
+    },
+    sources = {
+      files = {
+        exclude = search_ignores,
+      },
+      grep = {
+        exclude = search_ignores,
+      },
+    },
+  },
   dashboard = {
     preset = {
       keys = {
@@ -31,5 +60,14 @@ Snacks.setup({
 local opts = { silent = true, noremap = true }
 
 vim.keymap.set('n', '<leader>g', Snacks.lazygit.open, opts)
+
 vim.keymap.set('n', '<leader>n', Snacks.notifier.show_history, opts)
 vim.keymap.set('n', '<leader><leader>', Snacks.notifier.hide, opts)
+
+vim.keymap.set('n', '<leader>fb', Snacks.picker.buffers, opts)
+vim.keymap.set('n', '<leader>fc', Snacks.picker.highlights, opts)
+vim.keymap.set('n', '<leader>ff', Snacks.picker.files, opts)
+vim.keymap.set('n', '<leader>fg', Snacks.picker.grep, opts)
+vim.keymap.set('n', '<leader>fh', Snacks.picker.help, opts)
+vim.keymap.set('n', '<leader>fk', Snacks.picker.keymaps, opts)
+

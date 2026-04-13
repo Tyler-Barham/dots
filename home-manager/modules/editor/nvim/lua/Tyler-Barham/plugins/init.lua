@@ -185,18 +185,6 @@ local plugins = {
     end,
   },
   {
-    'nvim-telescope/telescope.nvim',
-    version = '0.1.x',
-    dependencies = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('Tyler-Barham.plugins.telescope')
-    end,
-  },
-  'nvim-telescope/telescope-ui-select.nvim',
-  {
     'MagicDuck/grug-far.nvim',
     config = function()
       require('Tyler-Barham.plugins.grug-far')

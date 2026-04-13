@@ -5,7 +5,7 @@ local opts = { silent = true, noremap = true }
 
 -- Trouble
 local trouble_toggle = require('trouble').toggle
-vim.keymap.set('n', '<leader>xt', function() trouble_toggle('telescope') end,                              opts)
+vim.keymap.set('n', '<leader>xs', function() trouble_toggle('snacks') end,                              opts)
 vim.keymap.set('n', '<leader>xx', function() trouble_toggle('diagnostics') end,                            opts)
 vim.keymap.set('n', '<leader>xb', function() trouble_toggle({ mode='diagnostics', filter={ buf=0 } }) end, opts)
 

@@ -146,18 +146,6 @@ local plugins = {
     end,
   },
   {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('Tyler-Barham.plugins.neo-tree')
-    end,
-  },
-  {
     'folke/trouble.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',

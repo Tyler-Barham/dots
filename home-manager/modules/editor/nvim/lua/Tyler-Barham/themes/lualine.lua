@@ -42,11 +42,8 @@ function M.setup(lualine_theme)
     inactive_winbar = {},
     extensions = {
       'lazy',
-      'mason',
-      'neo-tree',
       'nvim-dap-ui',
       'quickfix',
-      'toggleterm',
       'trouble',
     }
   })

@@ -8,6 +8,7 @@ local search_ignores = {
 
 Snacks.setup({
   image = { enabled = false }, -- Need to setup support for LaTeX and Mermaid first
+  explorer = { enabled = true },
   indent = { enabled = true },
   input = { enabled = true },
   notifier = { enabled = true },
@@ -58,6 +59,8 @@ Snacks.setup({
 })
 
 local opts = { silent = true, noremap = true }
+
+vim.keymap.set('n', '<leader>e', function() Snacks.explorer() end, opts)
 
 vim.keymap.set('n', '<leader>g', Snacks.lazygit.open, opts)
 

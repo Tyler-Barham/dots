@@ -11,7 +11,6 @@ AutoSession.setup({
   },
 
   pre_save_cmds    = {
-    'lua require([[neo-tree]]).close_all()',
     'lua require([[trouble]]).close()',
   },
 })

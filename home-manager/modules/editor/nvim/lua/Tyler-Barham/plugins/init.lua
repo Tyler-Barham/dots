@@ -39,15 +39,6 @@ local plugins = {
   --     require('Tyler-Barham.plugins.hardtime')
   --   end,
   -- },
-  -- {
-  --   'ThePrimeagen/harpoon',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --   },
-  --   config = function()
-  --     require('Tyler-Barham.plugins.harpoon')
-  --   end,
-  -- },
 
   -- cmp
   'hrsh7th/nvim-cmp',
@@ -184,21 +175,8 @@ local plugins = {
       require('Tyler-Barham.plugins.noice')
     end,
   },
-  {
-    'MagicDuck/grug-far.nvim',
-    config = function()
-      require('Tyler-Barham.plugins.grug-far')
-    end,
-  },
 
   -- Util
-  {
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    config = function()
-      require('Tyler-Barham.plugins.toggleterm')
-    end,
-  },
   {
     'Tyler-Barham/floating-help.nvim',
     -- dir = '~/Code/Personal/floating-help.nvim',
@@ -206,7 +184,6 @@ local plugins = {
       require('Tyler-Barham.plugins.floating-help')
     end,
   },
-
   {
     'ellisonleao/gruvbox.nvim',
     dependencies = {
@@ -217,7 +194,6 @@ local plugins = {
     end,
     priority = 25,
   },
-
   {
     'mawkler/modicator.nvim',
     dependencies = {

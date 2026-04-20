@@ -30,10 +30,15 @@ Snacks.setup({
       },
     },
     sources = {
+      explorer = {
+        hidden = true,
+      },
       files = {
+        hidden = true,
         exclude = search_ignores,
       },
       grep = {
+        hidden = true,
         exclude = search_ignores,
       },
     },

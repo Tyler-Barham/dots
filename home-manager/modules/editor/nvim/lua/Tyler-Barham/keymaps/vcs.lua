@@ -31,8 +31,8 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     local has_conflict = vim.fn.search(conflict_marker, 'nw') ~= 0
     if has_conflict then
       -- Accept LOCAL/REMOTE for the current conflict block
-      vim.keymap.set('n', '<leader>L', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget LO') end, { buffer = true })
-      vim.keymap.set('n', '<leader>R', function() vim.cmd('/<<<<<<</,/>>>>>>>/diffget RE') end, { buffer = true })
+      vim.keymap.set('n', '<leader>L', function() vim.fn.feedkeys(vim.api.nvim_replace_termcodes('?<<<<<<<\rV/>>>>>>>\r:diffget LO\r', true, false, true)) end, { buffer = true })
+      vim.keymap.set('n', '<leader>R', function() vim.fn.feedkeys(vim.api.nvim_replace_termcodes('?<<<<<<<\rV/>>>>>>>\r:diffget RE\r', true, false, true)) end, { buffer = true })
 
       -- Navigate between conflicts
       vim.keymap.set('n', ']x', function() vim.fn.search(conflict_marker, 'W') end, { buffer = true })

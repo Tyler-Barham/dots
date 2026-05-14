@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/vnd.jgraph.mxfile">
+    <comment>draw.io diagram</comment>
+    <glob pattern="*.drawio"/>
+  </mime-type>
+</mime-info>

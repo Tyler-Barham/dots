@@ -25,6 +25,7 @@
   home.file = {
     ".local/bin/sp".source = ./sp;
     ".local/share/mime/packages/onnx.xml".source = ./mime/onnx.xml;
+    ".local/share/mime/packages/drawio.xml".source = ./mime/drawio.xml;
     ".local/share/applications/spotify.desktop".text = builtins.replaceStrings
       [ "Exec=spotify %U" ]
       [ "Exec=spotify --ozone-platform=x11 %U" ]

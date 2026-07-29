@@ -324,6 +324,36 @@ class QDateTimePrinter:
     def display_hint(self):
         return 'datetime'
 
+class QDomElementPrinter:
+    """Print a Qt5 QDomElement"""
+
+    def __init__(self, val):
+        self.val = val
+
+    def to_string(self):
+        if not self.val:
+            return '<null>'
+
+        try:
+            # Safest: call Qt API to stringify
+            elem_str = gdb.parse_and_eval(
+                '((QDomElement*){:})->tagName()'.format(int(self.val.address))
+            )
+            tag = QStringPrinter(elem_str).to_string()
+
+            text_val = gdb.parse_and_eval(
+                '((QDomElement*){:})->text()'.format(int(self.val.address))
+            )
+            text = QStringPrinter(text_val).to_string()
+
+            return "<{}>{}</{}>".format(tag, text, tag)
+
+        except Exception:
+            return '<invalid QDomElement>'
+
+    def display_hint(self):
+        return 'string'
+
 class QHashPrinter:
     """Print a Qt5 QHash"""
 
@@ -930,6 +960,7 @@ def build_pretty_printer():
     # pp.add_printer('QUrl', '^QUrl$', QUrlPrinter)
     pp.add_printer('QByteArray', '^QByteArray$', QByteArrayPrinter)
     pp.add_printer('QChar', '^QChar$', QCharPrinter)
+    pp.add_printer('QDomElement', '^QDomElement$', QDomElementPrinter)
     pp.add_printer('QJsonArray', '^QJsonArray', QJsonArrayPrinter)
     pp.add_printer('QJsonObject', '^QJsonObject$', QJsonObjectPrinter)
     pp.add_printer('QList', '^QList<.*>$', QListPrinter)

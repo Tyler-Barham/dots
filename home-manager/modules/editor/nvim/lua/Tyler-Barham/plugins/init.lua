@@ -64,15 +64,15 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    branch = 'master',
+    branch = 'main',
     dependencies = {
       {
         'nvim-treesitter/nvim-treesitter-textobjects',
-        branch = 'master',
+        branch = 'main',
       },
       'nvim-treesitter/nvim-treesitter-context',
     },
-    build = ':TSUpdateSync',
+    build = ':TSUpdate',
     config = function()
       require('Tyler-Barham.plugins.treesitter')
     end,

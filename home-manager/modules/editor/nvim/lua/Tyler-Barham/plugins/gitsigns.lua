@@ -18,6 +18,7 @@ require('gitsigns').setup({
     virt_text_priority = 5000, -- noice search has priority 4096. Lower to come before, higher to come after
     delay = 100,
     ignore_whitespace = false
-  }
+  },
+  current_line_blame_formatter = '<author>, <author_time:%Y/%b/%d> - <summary>',
 })
 

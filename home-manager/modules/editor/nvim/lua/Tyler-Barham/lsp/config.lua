@@ -34,7 +34,7 @@ vim.lsp.config('ccls', {
     'docker-dev', '-i',
     'ccls'
   },
-  filetypes = { 'h', 'c', 'hpp', 'cpp', 'objc', 'objcpp', 'cuda', 'cu', 'cuh', 'proto' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
   root_markers = { 'compile_commands.json', '.ccls', '.git' },
   offset_encoding = 'utf-32',
   workspace_required = true,

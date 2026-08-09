@@ -6,7 +6,7 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-      withRuby = true;
+      withRuby = false;
       withPython3 = true;
       extraLuaPackages = ps: [
         ps.lua

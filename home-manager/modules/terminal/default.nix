@@ -1,14 +1,16 @@
 {
+  config,
   pkgs,
+  nixgl,
   ...
 }: {
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.sauce-code-pro
+    (config.lib.nixGL.wrap wezterm)
   ];
 
   home.file = {
-    # Manage cfg here, but install wezterm externally. Cbf working out egl issues...
     ".config/wezterm".source = ./wezterm;
   };
 }

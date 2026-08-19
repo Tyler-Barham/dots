@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     secret-sauce = {
       url = "git+file:/home/tBarham/Code/Personal/dots/secret-sauce";
       flake = false;
@@ -19,6 +24,7 @@
     self,
     nixpkgs,
     home-manager,
+    nixgl,
     ...
     } @ inputs: let
       systems = [
@@ -29,10 +35,15 @@
         "x86_64-darwin"
       ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
+      overlays = [ nixgl.overlay ];
 
       mkHome = { system, user, homeDir, extraModules ? [ ] }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
+
+          extraSpecialArgs = {
+            inherit nixgl;
+          };
 
           modules =
             [
@@ -43,6 +54,7 @@
 
                 # Generic Linux because we're not on NixOS
                 targets.genericLinux.enable = true;
+                targets.genericLinux.nixGL.packages = nixgl.packages;
               }
             ]
             ++ extraModules;

@@ -1,6 +1,7 @@
 local M = {}
 
 function M.set_window_config(config)
+  config.front_end = 'WebGpu'
   config.hide_tab_bar_if_only_one_tab = true
   config.tab_and_split_indices_are_zero_based = true
   config.use_fancy_tab_bar = false

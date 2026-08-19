@@ -37,7 +37,7 @@ end
 
 function M.set_font(config)
   config.font = wezterm.font_with_fallback {
-    { family = 'SauceCodePro Nerd Font Propo', weight = 'Medium' },
+    { family = 'SauceCodePro Nerd Font Propo', weight = 'Light' },
     'JetBrains Mono',
     'Noto Color Emoji',
   }

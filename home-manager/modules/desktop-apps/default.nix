@@ -1,35 +1,34 @@
 {
+  config,
   pkgs,
+  nixgl,
   lib,
   ...
 }: {
   home.packages = with pkgs; [
-    spotify
-    flameshot
+    (config.lib.nixGL.wrap spotify)
+    (config.lib.nixGL.wrap flameshot)
     weylus
     drawio
 
-    netron
+    (config.lib.nixGL.wrap netron)
     (makeDesktopItem {
       name = "netron";
       desktopName = "Netron";
       genericName = "Neural network viewer";
       comment = "Visualizer for neural network, deep learning and machine learning models";
       icon = "netron";
-      exec = "netron --ozone-platform=x11";
+      exec = "netron";
       terminal = false;
       mimeTypes = [ "application/x-onnx" ];
       categories = [ "Development" ];
     })
   ];
+
   home.file = {
     ".local/bin/sp".source = ./sp;
     ".local/share/mime/packages/onnx.xml".source = ./mime/onnx.xml;
     ".local/share/mime/packages/drawio.xml".source = ./mime/drawio.xml;
-    ".local/share/applications/spotify.desktop".text = builtins.replaceStrings
-      [ "Exec=spotify %U" ]
-      [ "Exec=spotify --ozone-platform=x11 %U" ]
-      (builtins.readFile "${pkgs.spotify}/share/applications/spotify.desktop");
   };
 
   home.activation.updateMime = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

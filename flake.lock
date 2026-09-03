@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787176219,
-        "narHash": "sha256-djoRr6jBpe35q/0JwAvXpFXg1Ktf+X54NU2RLR7wnHw=",
+        "lastModified": 1788458226,
+        "narHash": "sha256-UZTAlg8iKVEmyEXakzKmukrzFIKrXezYsRy9vajDrGw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c53d643b3737e2fcd04e6cb3b3580ef50b2087a0",
+        "rev": "aa308770461dcf22c333a5e8a31c8bddbde5bee9",
         "type": "github"
       },
       "original": {
@@ -61,11 +61,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1787070829,
-        "narHash": "sha256-vXNVDVtvfiQuXthP0NHPFdNvvMTkGpx0UP8oddIWbNk=",
+        "lastModified": 1788316716,
+        "narHash": "sha256-bc7rSpXIdn9QWGNqfWcPZWOhEVF8NoeAZkWq0XWnf/k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ae2bc1419c3f345984c2629e72e7a631820fa4d",
+        "rev": "3ed67ec0a4d3c7ab4ae1f04f8ee8df07bfa506a2",
         "type": "github"
       },
       "original": {
@@ -86,11 +86,11 @@
     "secret-sauce": {
       "flake": false,
       "locked": {
-        "lastModified": 1786668149,
-        "narHash": "sha256-f7dq6+Z/lus+Klzdb0zrFxCbRnwGSSn1pH7xSk9ltpU=",
+        "lastModified": 1788474199,
+        "narHash": "sha256-BDqVzLF8uLVEkGjWhf4Nza1+6s0uhISX88SvHnfhOgE=",
         "ref": "refs/heads/main",
-        "rev": "240b72a45fd5361490b673ce5ae639af9cf8cd84",
-        "revCount": 18,
+        "rev": "d930932794a394581e66eb1721da8f3190feac20",
+        "revCount": 19,
         "type": "git",
         "url": "file:/home/tBarham/Code/Personal/dots/secret-sauce"
       },

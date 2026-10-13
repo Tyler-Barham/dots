@@ -1,8 +1,5 @@
 local opts = { silent = true, noremap = true }
 
--- Reload config
-vim.keymap.set('n', '<leader>s', function() vim.cmd('source $MYVIMRC') end, opts)
-
 -- Reload buffers
 vim.keymap.set('n', '<F4>', function() vim.cmd('bufdo e') end, opts)
 

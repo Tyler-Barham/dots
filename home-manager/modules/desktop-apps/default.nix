@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap spotify)
     (config.lib.nixGL.wrap flameshot)
+    vscode
     weylus
     drawio
 

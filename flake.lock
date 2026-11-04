@@ -86,11 +86,11 @@
     "secret-sauce": {
       "flake": false,
       "locked": {
-        "lastModified": 1792617879,
-        "narHash": "sha256-G5T5aLqCiholV5Gbf/OvUYcZ31iKm4Ykp8EEmy5KU9w=",
+        "lastModified": 1793759531,
+        "narHash": "sha256-+BKkGqDkA3gCx5ivCc1XA8C9EBB+oDUJB2VmlCBkFRw=",
         "ref": "refs/heads/main",
-        "rev": "775a6d14c0227855a467c34a00de0f2733143c3c",
-        "revCount": 22,
+        "rev": "2294b84f9d1bf4a480ccc3b902c6d291eb1a98b2",
+        "revCount": 23,
         "type": "git",
         "url": "file:/home/tBarham/Code/Personal/dots/secret-sauce"
       },

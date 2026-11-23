@@ -44,15 +44,16 @@ function mocker-ips() {
 
 function mocker-images() {
     # Show tags, grouped by image ID
-    docker images \
+    docker images --format table \
         | awk 'NR==1 {print; next}
         {
-            if ($3 != last && NR > 2) {
+            img_id=$4
+            if (img_id != last && NR > 2) {
                 for (i=1;i<=maxlen;i++) printf "-";
                 printf "\n";
             }
             print;
-            last=$3;
+            last=img_id;
             if (length($0) > maxlen) maxlen = length($0)
         }'
 }
